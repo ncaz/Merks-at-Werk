@@ -39,10 +39,10 @@ max_health = null
 start_texture = ExtResource("5_u8vu6")
 destroyed_texture = ExtResource("6_ppe3g")
 
-[node name="MissleSpawnPoint" type="Marker2D" parent="." unique_id=1502107126]
+[node name="MissileSpawnPoint" type="Marker2D" parent="." unique_id=1502107126]
 position = Vector2(0, -5)
 
-[node name="Timer" type="Timer" parent="." unique_id=1834731248]
+[node name="MissleSpawnTimer" type="Timer" parent="." unique_id=1834731248]
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MissleSpawnTimer" to="." method="_on_timer_timeout"]

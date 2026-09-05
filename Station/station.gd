@@ -35,6 +35,8 @@ func _on_timer_timeout() -> void:
 		return
 
 	var missile = missile_scene.instantiate()
+	
+	print(missile)
 
 	missile.global_position = $MissileSpawnPoint.global_position
 
