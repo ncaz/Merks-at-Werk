@@ -19,18 +19,18 @@ func _ready():
 	$Sprite2D.texture = start_texture
 
 
-func enemy_hit():
+func enemy_hit(damage: int):
 	if is_destroyed():
 		return
 
-	current_health -= 1
+	current_health -= damage
 	if is_destroyed():
 		destroy_part()
 
 
 func destroy_part():
 	current_health = 0
-	
+
 	$Sprite2D.texture = destroyed_texture
 
 	$CollisionShape2D.set_deferred("disabled", true)
