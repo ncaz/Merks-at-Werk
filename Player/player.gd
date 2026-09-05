@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 200
 const MAX_SPEED = 300
 const VELOCITY_DELTA = 50
@@ -20,6 +19,8 @@ var Bullet = preload("res://Player/playerbullet.tscn")
 
 var shooting_enabled = true
 
+@export var health: int = 5
+
 func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
@@ -27,8 +28,10 @@ func _physics_process(delta: float) -> void:
 	move_default(delta)
 	rotate_default(delta)
 	move_and_slide()
+	
 	global_position = Vector2(clamp(global_position.x, -640, 640), clamp(global_position.y, -360, 360))
-
+	Globals.player_position = global_position
+	
 func move_default(delta: float):
 	input_axis = get_input_axis()
 	if input_axis != Vector2.ZERO:
@@ -80,3 +83,12 @@ func shoot():
 
 	$ShootSpeed.start()
 	shooting_enabled = false
+	
+func player_hit(damage):
+	health -= damage
+	if health <= 0:
+		explode()
+		
+func explode():
+	# Play animation
+	queue_free()

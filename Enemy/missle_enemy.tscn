@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cuetmviqorir"]
+
+[ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://Enemy/enemy.tscn" id="1_50lvk"]
+[ext_resource type="Texture2D" uid="uid://bbp8oqgqw25sy" path="res://Player/arrow.png" id="2_kaomv"]
+
+[node name="MissileEnemy" unique_id=1721345674 instance=ExtResource("1_50lvk")]
+collision_mask = 1
+motion_mode = 1
+speed = 400.0
+rot_speed = 10.0
+ramping_speed = false
+
+[node name="Sprite" parent="." index="1" unique_id=7298653]
+modulate = Color(1, 0, 0, 1)
+rotation = 1.5707964
+texture = ExtResource("2_kaomv")

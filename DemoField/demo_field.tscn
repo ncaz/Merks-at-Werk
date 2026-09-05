@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bj11740uxnxcl"]
 
 [ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://Enemy/enemy.tscn" id="1_22usk"]
+[ext_resource type="PackedScene" uid="uid://cuetmviqorir" path="res://Enemy/missle_enemy.tscn" id="2_xhp28"]
 
 [node name="DemoField" type="Node2D" unique_id=1568139286]
 
@@ -15,3 +16,15 @@ position = Vector2(-29, 320)
 
 [node name="EnemyLeft" parent="." unique_id=1762507740 instance=ExtResource("1_22usk")]
 position = Vector2(-400, 31)
+
+[node name="Missle Enemy" parent="." unique_id=174430747 instance=ExtResource("2_xhp28")]
+position = Vector2(252, 244)
+
+[node name="Missle Enemy2" parent="." unique_id=1704294554 instance=ExtResource("2_xhp28")]
+position = Vector2(-277, 159)
+
+[node name="Missle Enemy3" parent="." unique_id=1015054986 instance=ExtResource("2_xhp28")]
+position = Vector2(-213, -325)
+
+[node name="Missle Enemy4" parent="." unique_id=106514785 instance=ExtResource("2_xhp28")]
+position = Vector2(366, -268)
