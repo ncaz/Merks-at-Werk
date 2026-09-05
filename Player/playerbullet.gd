@@ -17,3 +17,10 @@ func _on_PlayerBullet_body_entered(body: Node2D) -> void:
 	if body.has_method('enemy_hit'):
 		body.enemy_hit()
 		queue_free()
+		
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.has_method("enemy_hit"):
+		area.enemy_hit()
+		queue_free()

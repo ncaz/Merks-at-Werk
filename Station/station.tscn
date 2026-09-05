@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://r136u0f8rqfk"]
+
+[ext_resource type="Script" uid="uid://xxlj5ngmh34b" path="res://Station/station.gd" id="1_g86ch"]
+[ext_resource type="PackedScene" uid="uid://rol23q7uq6d1" path="res://Station/destructible_part.tscn" id="1_qf0mg"]
+[ext_resource type="Texture2D" uid="uid://d228yiil02rsc" path="res://Station/weak.png" id="3_n842p"]
+[ext_resource type="Texture2D" uid="uid://dy8r5fljllga6" path="res://Station/weak_destroyed.png" id="4_paoq3"]
+[ext_resource type="Texture2D" uid="uid://cpdvlustickvd" path="res://Station/core.png" id="5_u8vu6"]
+[ext_resource type="Texture2D" uid="uid://dsojvn8mxdxxb" path="res://Station/core_destroyed.png" id="6_ppe3g"]
+
+[node name="Station" type="Node2D" unique_id=216108015]
+script = ExtResource("1_g86ch")
+
+[node name="WeakNorth" parent="." unique_id=283975245 groups=["weak"] instance=ExtResource("1_qf0mg")]
+position = Vector2(0, -40)
+max_health = null
+start_texture = ExtResource("3_n842p")
+destroyed_texture = ExtResource("4_paoq3")
+
+[node name="WeakSouth" parent="." unique_id=1894451474 groups=["weak"] instance=ExtResource("1_qf0mg")]
+position = Vector2(0, 40)
+max_health = null
+start_texture = ExtResource("3_n842p")
+destroyed_texture = ExtResource("4_paoq3")
+
+[node name="WeakEast" parent="." unique_id=1711276906 groups=["weak"] instance=ExtResource("1_qf0mg")]
+position = Vector2(-40, 0)
+max_health = null
+start_texture = ExtResource("3_n842p")
+destroyed_texture = ExtResource("4_paoq3")
+
+[node name="WeakWest" parent="." unique_id=517050629 groups=["weak"] instance=ExtResource("1_qf0mg")]
+position = Vector2(40, 0)
+max_health = null
+start_texture = ExtResource("3_n842p")
+destroyed_texture = ExtResource("4_paoq3")
+
+[node name="Core" parent="." unique_id=2086580277 instance=ExtResource("1_qf0mg")]
+max_health = null
+start_texture = ExtResource("5_u8vu6")
+destroyed_texture = ExtResource("6_ppe3g")
+
+[node name="MissleSpawnPoint" type="Marker2D" parent="." unique_id=1502107126]
+position = Vector2(0, -5)
+
+[node name="Timer" type="Timer" parent="." unique_id=1834731248]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
