@@ -12,30 +12,25 @@ script = ExtResource("1_g86ch")
 
 [node name="WeakNorth" parent="." unique_id=283975245 groups=["weak"] instance=ExtResource("1_qf0mg")]
 position = Vector2(0, -40)
-max_health = null
 start_texture = ExtResource("3_n842p")
 destroyed_texture = ExtResource("4_paoq3")
 
 [node name="WeakSouth" parent="." unique_id=1894451474 groups=["weak"] instance=ExtResource("1_qf0mg")]
 position = Vector2(0, 40)
-max_health = null
 start_texture = ExtResource("3_n842p")
 destroyed_texture = ExtResource("4_paoq3")
 
 [node name="WeakEast" parent="." unique_id=1711276906 groups=["weak"] instance=ExtResource("1_qf0mg")]
 position = Vector2(-40, 0)
-max_health = null
 start_texture = ExtResource("3_n842p")
 destroyed_texture = ExtResource("4_paoq3")
 
 [node name="WeakWest" parent="." unique_id=517050629 groups=["weak"] instance=ExtResource("1_qf0mg")]
 position = Vector2(40, 0)
-max_health = null
 start_texture = ExtResource("3_n842p")
 destroyed_texture = ExtResource("4_paoq3")
 
 [node name="Core" parent="." unique_id=2086580277 instance=ExtResource("1_qf0mg")]
-max_health = null
 start_texture = ExtResource("5_u8vu6")
 destroyed_texture = ExtResource("6_ppe3g")
 
@@ -43,6 +38,7 @@ destroyed_texture = ExtResource("6_ppe3g")
 position = Vector2(0, -5)
 
 [node name="MissleSpawnTimer" type="Timer" parent="." unique_id=1834731248]
+wait_time = 1.5
 autostart = true
 
 [connection signal="timeout" from="MissleSpawnTimer" to="." method="_on_timer_timeout"]

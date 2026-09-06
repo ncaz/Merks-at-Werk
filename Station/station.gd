@@ -49,5 +49,7 @@ func destroy_station():
 	is_destroyed = true
 	print("station destroyed")
 	$Core.destroy_part()
+	$Core.disable_part()
 	for weak in _get_weaks():
 		weak.destroy_part()
+		weak.disable_part()

@@ -27,11 +27,16 @@ func enemy_hit(damage: int):
 	if is_destroyed():
 		destroy_part()
 
+func enable_part():
+	$CollisionShape2D.set_deferred("disabled", false)
+
+func disable_part():
+	$CollisionShape2D.set_deferred("disabled", true)
+
 
 func destroy_part():
 	current_health = 0
 
 	$Sprite2D.texture = destroyed_texture
 
-	$CollisionShape2D.set_deferred("disabled", true)
 	destroyed.emit()
