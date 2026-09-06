@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://Enemy/enemy.tscn" id="1_22usk"]
 [ext_resource type="PackedScene" uid="uid://r136u0f8rqfk" path="res://Station/station.tscn" id="2_xhp28"]
-[ext_resource type="PackedScene" uid="uid://cuetmviqorir" path="res://Enemy/missle_enemy.tscn" id="3_m1rnc"]
+[ext_resource type="PackedScene" uid="uid://cuetmviqorir" path="res://Enemy/missile_enemy.tscn" id="3_m1rnc"]
 
 [node name="DemoField" type="Node2D" unique_id=1568139286]
 
