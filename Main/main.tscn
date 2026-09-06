@@ -10,6 +10,7 @@
 script = ExtResource("1_k3v36")
 
 [node name="Player" parent="." unique_id=1576711874 instance=ExtResource("2_liyct")]
+position = Vector2(0, 2)
 slide_on_ceiling = true
 floor_stop_on_slope = false
 floor_constant_speed = true

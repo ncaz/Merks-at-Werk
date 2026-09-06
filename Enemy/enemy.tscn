@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 16.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1721345674]
+[node name="Enemy" type="CharacterBody2D" unique_id=1721345674 groups=["enemies"]]
 collision_layer = 2
 collision_mask = 0
 floor_stop_on_slope = false

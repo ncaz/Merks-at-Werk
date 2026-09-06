@@ -7,7 +7,17 @@ const ACCELERATION = 7200
 const REVERSING_ACCELERATION = -3600
 const FRICTION = 7200
 
+# Weapon Stats
 var bullet_damage = 1
+var attack_cooldown = 0.3
+var shoot_behind = true
+var bullet_volley_count = 5
+var bullet_volley_spread = 15
+var homing_degrees = 5
+var homing_dist = 150
+var max_range = 500
+var bullet_speed = 800
+
 
 var Bullet = preload("res://Player/playerbullet.tscn")
 
@@ -69,19 +79,40 @@ func _process(delta: float):
 	if Input.is_action_pressed("Shoot") and shooting_enabled:
 		shoot()
 
-func shoot():
-	var bullet = Bullet.instantiate()
-	bullet.damage = bullet_damage
-	bullet.transform = SpawnPos.global_transform
-	get_tree().current_scene.add_child(bullet)
 
-	var bullet_behind = Bullet.instantiate()
-	bullet.damage = bullet_damage
-	bullet_behind.transform = SpawnPos.global_transform
-	bullet_behind.transform.x = -bullet_behind.transform.x
-	get_tree().current_scene.add_child(bullet_behind)
+	
 
-	$ShootSpeed.start()
+func shoot():	
+	var new_rotation_offset = 0 - bullet_volley_spread * (bullet_volley_count- 1)/2
+	for i in range(bullet_volley_count):
+		var bullet = Bullet.instantiate()
+		bullet.damage = bullet_damage
+		bullet.homing_degrees = homing_degrees
+		bullet.max_homing_dist = homing_dist * homing_dist # squared dist
+		bullet.max_range = max_range
+		bullet.SPEED = bullet_speed
+		bullet.transform = SpawnPos.global_transform
+		bullet.rotation += deg_to_rad(new_rotation_offset)
+		new_rotation_offset += bullet_volley_spread
+		get_tree().current_scene.add_child(bullet)
+	
+	if shoot_behind:
+		new_rotation_offset = 0 - bullet_volley_spread * (bullet_volley_count- 1)/2
+		for i in range(bullet_volley_count):
+			var bullet = Bullet.instantiate()
+			bullet.damage = bullet_damage
+			bullet.homing_degrees = homing_degrees
+			bullet.max_homing_dist = homing_dist * homing_dist # squared dist
+			bullet.max_range = max_range
+			bullet.SPEED = bullet_speed
+			bullet.transform = SpawnPos.global_transform
+			bullet.rotation += deg_to_rad(new_rotation_offset)
+			bullet.transform.x = - bullet.transform.x
+			new_rotation_offset += bullet_volley_spread
+			get_tree().current_scene.add_child(bullet)
+		
+	
+	$ShootSpeed.start(attack_cooldown)
 	shooting_enabled = false
 	
 func player_hit(damage):
