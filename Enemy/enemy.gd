@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		if collision:
 			var collider = collision.get_collider()
 			if collider.is_in_group("player"):
-				collider.player_hit(3)
+				collider.player_hit(0)
 				explode()
 	
 func enemy_hit(damage=1):
