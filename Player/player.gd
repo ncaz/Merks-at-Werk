@@ -4,8 +4,7 @@ const SPEED = 200
 const MAX_SPEED = 300
 const VELOCITY_DELTA = 50
 const ACCELERATION = 7200
-const REVERSING_ACCELERATION = -3600
-const FRICTION = 7200
+const FRICTION = 5400
 
 # Weapon Stats
 var bullet_damage = 1
@@ -23,7 +22,6 @@ var Bullet = preload("res://Player/playerbullet.tscn")
 
 @onready var input_axis = Vector2.ZERO
 @onready var axis = Vector2.UP
-@onready var reversing = false
 @onready var SpawnPos = $SpawnPos
 @onready var current_acceleration = 0
 
@@ -47,24 +45,17 @@ func move_default(delta: float):
 	if input_axis != Vector2.ZERO:
 		current_acceleration = ACCELERATION
 		axis = input_axis
-	elif input_axis == -axis:
-		reversing = true
-	if reversing:
-		current_acceleration = REVERSING_ACCELERATION
-		if axis == 0:
-			pass
-	else:
-		current_acceleration = ACCELERATION
-	
-	apply_movement(axis * current_acceleration * delta)	
-func rotate_default(delta: float):
-	rotation_degrees = rad_to_deg(atan2(axis.y, axis.x))
-func get_input_axis():
-	return Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
-
-func apply_movement(accel: Vector2):
+	if snap_to_tenths(axis) == -snap_to_tenths(velocity.normalized()):
+		current_acceleration = ACCELERATION - FRICTION
+	var accel = axis * current_acceleration * delta
 	velocity += accel
 	velocity = velocity.limit_length(MAX_SPEED)
+
+func rotate_default(delta: float):
+	rotation_degrees = rad_to_deg(atan2(axis.y, axis.x))
+
+func get_input_axis():
+	return Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 
 func apply_friction(amount: float):
 	if velocity.length() > amount:
@@ -123,3 +114,7 @@ func player_hit(damage):
 func explode():
 	# Play animation
 	queue_free()
+
+func snap_to_tenths(vector: Vector2):
+	# Rounds components of vector to tenths place
+	return vector.snapped(Vector2(0.1,0.1))
