@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://rol23q7uq6d1"]
+
+[ext_resource type="Script" uid="uid://b7fctqdn163gt" path="res://Station/destructible_part.gd" id="1_w447f"]
+[ext_resource type="Texture2D" uid="uid://cpdvlustickvd" path="res://Station/core.png" id="2_olr7p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d20ow"]
+radius = 17.0
+
+[node name="DestructiblePart" type="Area2D" unique_id=284263548]
+collision_layer = 2
+script = ExtResource("1_w447f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1057756893]
+shape = SubResource("CircleShape2D_d20ow")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=650482694]
+position = Vector2(-4.5474735e-13, -4.5474735e-13)
+scale = Vector2(1.1250005, 1.1250005)
+texture = ExtResource("2_olr7p")
