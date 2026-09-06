@@ -36,13 +36,11 @@ func move_default(delta: float):
 		current_acceleration = ACCELERATION
 		axis = input_axis
 	if snap_to_tenths(axis) == -snap_to_tenths(velocity.normalized()):
-		current_acceleration -= FRICTION
-	print(current_acceleration)
-	print(input_axis, axis, velocity.normalized())
+		current_acceleration = ACCELERATION - FRICTION
 	var accel = axis * current_acceleration * delta
 	velocity += accel
 	velocity = velocity.limit_length(MAX_SPEED)
-	
+
 func rotate_default(delta: float):
 	rotation_degrees = rad_to_deg(atan2(axis.y, axis.x))
 
