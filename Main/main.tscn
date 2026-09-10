@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://crtdv5djku0ij" path="res://Main/main.gd" id="1_k3v36"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://Player/player.tscn" id="2_liyct"]
 [ext_resource type="Script" uid="uid://bqjbnbfd7jlob" path="res://Player/camera.gd" id="3_ib3t1"]
+[ext_resource type="Resource" uid="uid://bvkivroxr7m5m" path="res://Weapons/default_weapon.tres" id="3_liyct"]
 [ext_resource type="Script" uid="uid://cxfmjbimw3b1d" path="res://enemy_spawner.gd" id="4_f6fdm"]
 [ext_resource type="PackedScene" uid="uid://bj11740uxnxcl" path="res://DemoField/demo_field.tscn" id="5_rj11h"]
 
@@ -15,9 +16,9 @@ slide_on_ceiling = true
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
+Weapon = ExtResource("3_liyct")
 
 [node name="Camera" type="Camera2D" parent="Player" unique_id=1490524235]
-visible = false
 script = ExtResource("3_ib3t1")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1732974511]

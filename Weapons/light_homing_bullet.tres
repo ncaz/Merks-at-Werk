@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="bulletData" format=3 uid="uid://ddqmwey3sqq83"]
+
+[ext_resource type="PackedScene" uid="uid://fg6k85kg5qyx" path="res://Weapons/playerbullet.tscn" id="1_yxhou"]
+[ext_resource type="Script" uid="uid://d0xegv4b2ggbc" path="res://Weapons/bulletResource.gd" id="2_1hwy4"]
+
+[resource]
+script = ExtResource("2_1hwy4")
+damage = 0.5
+homing_degrees = 2.0
+max_range = 1000
+metadata/_custom_type_script = "uid://d0xegv4b2ggbc"

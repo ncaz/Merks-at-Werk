@@ -7,18 +7,10 @@ const ACCELERATION = 7200
 const FRICTION = 5400
 
 # Weapon Stats
-@export_enum("default", "volley_spread", "three_way") var shot_pattern: String = "default"
-var bullet_damage = 1
-var attack_cooldown = 0.3
-var shoot_behind = true
-var bullet_volley_count = 5
-var bullet_volley_spread = 15
-var homing_degrees = 5
-var homing_dist = 150
-var max_range = 500
-var bullet_speed = 800
 
-var Bullet = preload("res://Player/playerbullet.tscn")
+@export var Weapon = Resource
+
+var Bullet = preload("res://Weapons/playerbullet.tscn")
 
 @onready var input_axis = Vector2.ZERO
 @onready var axis = Vector2.UP
@@ -32,7 +24,7 @@ var shooting_enabled = true
 @export var health: int = 5
 
 func _physics_process(delta: float) -> void:
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	move_default(delta)
@@ -73,69 +65,54 @@ func _process(delta: float):
 		shoot()
 
 func shoot():
-	match shot_pattern:
-		"default":
-			shoot_default()
-		"volley_spread":
-			shoot_volley_spread()
-		"three_way":
-			shoot_three_way()
-	$ShootSpeed.start(attack_cooldown)
+	shoot_volley_spread()
+	$ShootSpeed.start(Weapon.shot_cooldown)
+	shooting_enabled = false
+	return
+	
+	$ShootSpeed.start(Weapon.shot_cooldown)
 	shooting_enabled = false
 
-func shoot_default():
-	var bullet: Object
-	var bullet_behind: Object
 
-	bullet = Bullet.instantiate()
-	print("Bullet has type ", type_string(typeof(bullet)))
-	bullet.damage = bullet_damage
-	bullet.homing_degrees = 0
-	bullet.max_range = 2000
-	bullet.speed = bullet_speed
-	bullet.transform = SpawnPos.global_transform
-	get_tree().current_scene.add_child(bullet)
 
-	if shoot_behind:
-		bullet_behind = Bullet.instantiate()
-		bullet_behind.damage = bullet_damage
-		bullet_behind.homing_degrees = 0
-		bullet_behind.max_range = 2000
-		bullet_behind.speed = bullet_speed
-		bullet_behind.transform = SpawnPosBehind.global_transform
-		bullet_behind.transform.x = -bullet_behind.transform.x
-		get_tree().current_scene.add_child(bullet_behind)
 func shoot_volley_spread():
 	var bullet: Object
 	var bullet_behind: Object
+	var count = Weapon.bullet_volley_count
+	var spread = Weapon.bullet_volley_spread
+	
+	
 
-	var new_rotation_offset = 0 - bullet_volley_spread * (bullet_volley_count- 1)/2
-	for i in range(bullet_volley_count):
-		bullet = Bullet.instantiate()
-		bullet.damage = bullet_damage
-		bullet.homing_degrees = homing_degrees
-		bullet.max_homing_dist = homing_dist * homing_dist # squared dist
-		bullet.max_range = max_range
-		bullet.speed = bullet_speed
+	var new_rotation_offset = 0 - spread * (count- 1)/2
+	var bullet_cache = Weapon.bullet_data.bullet_scene.instantiate()
+	#bullet_cache.load_stats(Weapon.bullet_data)
+	for i in range(count):
+		bullet = bullet_cache.duplicate()
+		bullet.load_stats(Weapon.bullet_data)
 		bullet.transform = SpawnPos.global_transform
 		bullet.rotation += deg_to_rad(new_rotation_offset)
-		new_rotation_offset += bullet_volley_spread
+		new_rotation_offset += spread
 		get_tree().current_scene.add_child(bullet)
 	
-	if shoot_behind:
-		new_rotation_offset = 0 - bullet_volley_spread * (bullet_volley_count- 1)/2
-		for i in range(bullet_volley_count):
-			bullet_behind = Bullet.instantiate()
-			bullet_behind.damage = bullet_damage
-			bullet_behind.homing_degrees = homing_degrees
-			bullet_behind.max_homing_dist = homing_dist * homing_dist # squared dist
-			bullet_behind.max_range = max_range
-			bullet_behind.speed = bullet_speed
+	if Weapon.shoot_behind:
+		if Weapon.single_behind:
+			new_rotation_offset = 0
+			bullet_behind = bullet_cache.duplicate()
+			bullet_behind.load_stats(Weapon.bullet_data)
 			bullet_behind.transform = SpawnPosBehind.global_transform
 			bullet_behind.rotation += deg_to_rad(new_rotation_offset)
 			bullet_behind.transform.x = -bullet_behind.transform.x
-			new_rotation_offset += bullet_volley_spread
 			get_tree().current_scene.add_child(bullet_behind)
+		else:
+			new_rotation_offset = 0 - spread * (count- 1)/2
+			for i in range(count):
+				bullet_behind = bullet_cache.duplicate()
+				bullet_behind.load_stats(Weapon.bullet_data)
+				bullet_behind.transform = SpawnPosBehind.global_transform
+				bullet_behind.rotation += deg_to_rad(new_rotation_offset)
+				bullet_behind.transform.x = -bullet_behind.transform.x
+				new_rotation_offset += spread
+				get_tree().current_scene.add_child(bullet_behind)
 	
 func shoot_three_way():
 	
@@ -145,21 +122,17 @@ func shoot_three_way():
 	for rot in [-45, 45]:
 		
 		bullet = Bullet.instantiate()
-		print(type_string(typeof(bullet)))
-		bullet.damage = bullet_damage
+
 		bullet.homing_degrees = 0
 		bullet.max_range = 2000
-		bullet.speed = bullet_speed
 		bullet.transform = SpawnPos.global_transform
 		bullet.rotation_degrees += rot
 		get_tree().current_scene.add_child(bullet)
 	
-	if shoot_behind:
+	if Weapon.shoot_behind:
 		bullet_behind = Bullet.instantiate()
-		bullet_behind.damage = bullet_damage
 		bullet_behind.homing_degrees = 0
 		bullet_behind.max_range = 2000
-		bullet_behind.speed = bullet_speed
 		bullet_behind.transform = SpawnPosBehind.global_transform
 		bullet_behind.transform.x = -bullet_behind.transform.x
 		get_tree().current_scene.add_child(bullet_behind)

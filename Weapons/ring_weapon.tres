@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="weapon" format=3 uid="uid://ciabcdlgcx6bc"]
+
+[ext_resource type="Script" uid="uid://npt2osfb35g" path="res://Weapons/weaponResource.gd" id="1_1j3fy"]
+[ext_resource type="Resource" uid="uid://cu673ohtb3ldv" path="res://Weapons/default_bullet.tres" id="1_nvi6j"]
+
+[resource]
+script = ExtResource("1_1j3fy")
+bullet_volley_count = 12
+bullet_volley_spread = 30
+shot_cooldown = 0.4
+bullet_data = ExtResource("1_nvi6j")
+metadata/_custom_type_script = "uid://npt2osfb35g"

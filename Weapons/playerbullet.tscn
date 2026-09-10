@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://fg6k85kg5qyx"]
 
-[ext_resource type="Script" uid="uid://cmqin3p41o3s" path="res://Player/playerbullet.gd" id="1_8jekg"]
-[ext_resource type="Texture2D" uid="uid://doecb30wltyvq" path="res://Player/bullet.png" id="2_np1f6"]
+[ext_resource type="Script" uid="uid://cmqin3p41o3s" path="res://Weapons/playerbullet.gd" id="1_wdsw1"]
+[ext_resource type="Texture2D" uid="uid://doecb30wltyvq" path="res://Player/bullet.png" id="2_13udw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s271d"]
 size = Vector2(4, 12)
 
 [node name="PlayerBullet" type="Area2D" unique_id=857817251]
 collision_mask = 2
-script = ExtResource("1_8jekg")
+script = ExtResource("1_wdsw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=988235252]
 rotation = 1.5707964
-texture = ExtResource("2_np1f6")
+texture = ExtResource("2_13udw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314052759]
 rotation = 1.5707964
