@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	if ramping_speed:
 		current_speed = lerp(current_speed, max_speed, delta * ramp_weight)
 		speed = current_speed
+		print(speed)
 		
 	if speed != 0:
 		
