@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bjljqausbacjw"]
+
+[ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="2_27fn8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fyqef"]
+load_path = "res://.godot/imported/main_ui_sprite.PNG-35bb19244ff73f8f119e9366391135f2.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_qnusm"]
+font = ExtResource("2_27fn8")
+font_size = 32
+
+[node name="UI" type="Control" unique_id=1763726028]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2087044136]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 240.0
+scale = Vector2(2, 2)
+texture = SubResource("CompressedTexture2D_fyqef")
+stretch_mode = 2
+
+[node name="scoreText" type="Label" parent="." unique_id=399080211]
+layout_mode = 0
+offset_left = 320.0
+offset_right = 512.0
+offset_bottom = 26.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_qnusm")
+
+[node name="moneyText" type="Label" parent="." unique_id=998461276]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 440.0
+offset_right = 296.0
+offset_bottom = 466.0
+text = "$ 0"
+label_settings = SubResource("LabelSettings_qnusm")
