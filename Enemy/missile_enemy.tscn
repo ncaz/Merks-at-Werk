@@ -7,6 +7,7 @@
 collision_mask = 1
 motion_mode = 1
 speed = 300.0
+homing = true
 
 [node name="Sprite" parent="." index="1" unique_id=7298653]
 modulate = Color(1, 0, 0, 1)

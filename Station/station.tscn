@@ -20,12 +20,12 @@ position = Vector2(0, 40)
 start_texture = ExtResource("3_n842p")
 destroyed_texture = ExtResource("4_paoq3")
 
-[node name="WeakEast" parent="." unique_id=1711276906 groups=["weak"] instance=ExtResource("1_qf0mg")]
+[node name="WeakWest" parent="." unique_id=1711276906 groups=["weak"] instance=ExtResource("1_qf0mg")]
 position = Vector2(-40, 0)
 start_texture = ExtResource("3_n842p")
 destroyed_texture = ExtResource("4_paoq3")
 
-[node name="WeakWest" parent="." unique_id=517050629 groups=["weak"] instance=ExtResource("1_qf0mg")]
+[node name="WeakEast" parent="." unique_id=517050629 groups=["weak"] instance=ExtResource("1_qf0mg")]
 position = Vector2(40, 0)
 start_texture = ExtResource("3_n842p")
 destroyed_texture = ExtResource("4_paoq3")
@@ -41,4 +41,8 @@ position = Vector2(0, -5)
 wait_time = 3.0
 autostart = true
 
-[connection signal="timeout" from="MissleSpawnTimer" to="." method="_on_timer_timeout"]
+[node name="BulletTimer" type="Timer" parent="." unique_id=1557714664]
+autostart = true
+
+[connection signal="timeout" from="MissleSpawnTimer" to="." method="_on_missle_spawn_timer_timeout"]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

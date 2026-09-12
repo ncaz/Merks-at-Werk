@@ -1,10 +1,12 @@
 extends Node2D
 
 @export var missile_scene: PackedScene
+@export var bullet_scene: PackedScene
 
 var is_destroyed = false
 
 func _get_weaks() -> Array[DestructiblePart]:
+	
 	return get_children().filter(
 		func(child):
 			return child.is_in_group("weak"),
@@ -25,9 +27,19 @@ func _check_weaks_destroyed():
 			return weak.is_destroyed(),
 	):
 		destroy_station()
-
-
-func _on_timer_timeout() -> void:
+		
+func destroy_station():
+	if is_destroyed:
+		return
+	is_destroyed = true
+	print("station destroyed")
+	$Core.destroy_part()
+	$Core.disable_part()
+	for weak in _get_weaks():
+		weak.destroy_part()
+		weak.disable_part()
+		
+func _on_missle_spawn_timer_timeout() -> void:
 	if is_destroyed:
 		return
 	print("shooting missle")
@@ -43,13 +55,27 @@ func _on_timer_timeout() -> void:
 	get_tree().current_scene.add_child(missile)
 
 
-func destroy_station():
-	if is_destroyed:
+func _on_bullet_timer_timeout() -> void:
+	
+	if bullet_scene == null:
 		return
-	is_destroyed = true
-	print("station destroyed")
-	$Core.destroy_part()
-	$Core.disable_part()
+		
+	var lowest_dist = INF
+	var closest_weak = null
+	
 	for weak in _get_weaks():
-		weak.destroy_part()
-		weak.disable_part()
+		if !weak.is_destroyed():
+			
+			var dist = weak.global_position.distance_to(Globals.player_position)
+			if dist < lowest_dist:
+				lowest_dist = dist
+				closest_weak = weak
+	
+	if closest_weak:
+		var bullet = bullet_scene.instantiate()
+			
+		bullet.global_position = closest_weak.global_position
+		bullet.axis = (Globals.player_position - bullet.global_position).normalized()
+			
+		get_tree().current_scene.add_child(bullet)
+			
