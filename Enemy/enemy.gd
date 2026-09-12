@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
 var state = "demo"
-var axis = Vector2.ZERO
+@export var axis = Vector2.ZERO
 
 @export var health = 1
 @export var speed: float = 0.0
+
+@export_category("Homing")
+@export var homing: bool = false
 @export var rot_speed: float = 4.0
 
 # Ramping (Enemy Takes Time To Reach Full Speed)
@@ -15,6 +18,10 @@ var current_speed: float = 0.0
 ## Float multiplied by delta to get weight used for lerping. Increase for faster ramping, decrease for slower ramping.
 @export var ramp_weight: float = 1.0
 
+func _ready() -> void:
+	if !homing:
+		rotation = axis.angle()
+		
 func _physics_process(delta: float) -> void:
 	if state == "demo":
 		pass
@@ -22,14 +29,16 @@ func _physics_process(delta: float) -> void:
 	if ramping_speed:
 		current_speed = lerp(current_speed, max_speed, delta * ramp_weight)
 		speed = current_speed
+		#print(speed)
 		
 	if speed != 0:
 		
-		var axis: Vector2 = global_position.direction_to(Globals.player_position)
-		var target_angle = axis.angle()
+		if homing:
+			axis = global_position.direction_to(Globals.player_position)
+			var target_angle = axis.angle()
 		
-		rotation = rotate_toward(rotation, target_angle, rot_speed * delta)
-		axis = Vector2.RIGHT.rotated(rotation)
+			rotation = rotate_toward(rotation, target_angle, rot_speed * delta)
+			axis = Vector2.RIGHT.rotated(rotation)
 		
 		if axis != Vector2.ZERO:
 			velocity = speed * axis
