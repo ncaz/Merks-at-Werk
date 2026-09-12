@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="bulletData" format=3 uid="uid://cu673ohtb3ldv"]
+
+[ext_resource type="PackedScene" uid="uid://fg6k85kg5qyx" path="res://Weapons/playerbullet.tscn" id="1_51ny1"]
+[ext_resource type="Script" uid="uid://d0xegv4b2ggbc" path="res://Weapons/bulletResource.gd" id="2_1ys4i"]
+
+[resource]
+script = ExtResource("2_1ys4i")
+metadata/_custom_type_script = "uid://d0xegv4b2ggbc"

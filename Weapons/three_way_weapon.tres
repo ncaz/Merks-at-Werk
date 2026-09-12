@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="weapon" format=3 uid="uid://dc0m016cf4fhi"]
+
+[ext_resource type="Script" uid="uid://npt2osfb35g" path="res://Weapons/weaponResource.gd" id="1_jxk8w"]
+[ext_resource type="PackedScene" uid="uid://fg6k85kg5qyx" path="res://Weapons/playerbullet.tscn" id="1_r68ni"]
+[ext_resource type="Script" uid="uid://d0xegv4b2ggbc" path="res://Weapons/bulletResource.gd" id="2_c8j8r"]
+
+[sub_resource type="Resource" id="Resource_jxk8w"]
+script = ExtResource("2_c8j8r")
+metadata/_custom_type_script = "uid://d0xegv4b2ggbc"
+
+[resource]
+script = ExtResource("1_jxk8w")
+bullet_volley_count = 2
+bullet_volley_spread = 90
+shot_cooldown = 0.1
+bullet_data = SubResource("Resource_jxk8w")
+metadata/_custom_type_script = "uid://npt2osfb35g"

@@ -38,7 +38,7 @@ destroyed_texture = ExtResource("6_ppe3g")
 position = Vector2(0, -5)
 
 [node name="MissleSpawnTimer" type="Timer" parent="." unique_id=1834731248]
-wait_time = 1.5
+wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="MissleSpawnTimer" to="." method="_on_timer_timeout"]

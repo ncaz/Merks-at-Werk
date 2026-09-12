@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="weapon" format=3 uid="uid://xkjq25nnby7s"]
+
+[ext_resource type="Script" uid="uid://npt2osfb35g" path="res://Weapons/weaponResource.gd" id="1_7xn2c"]
+[ext_resource type="Resource" uid="uid://ddqmwey3sqq83" path="res://Weapons/light_homing_bullet.tres" id="1_mgkpc"]
+
+[resource]
+script = ExtResource("1_7xn2c")
+bullet_volley_spread = 30
+bullet_data = ExtResource("1_mgkpc")
+metadata/_custom_type_script = "uid://npt2osfb35g"
