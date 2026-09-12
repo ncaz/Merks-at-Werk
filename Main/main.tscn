@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bvkivroxr7m5m" path="res://Weapons/default_weapon.tres" id="3_liyct"]
 [ext_resource type="Script" uid="uid://cxfmjbimw3b1d" path="res://enemy_spawner.gd" id="4_f6fdm"]
 [ext_resource type="PackedScene" uid="uid://bj11740uxnxcl" path="res://DemoField/demo_field.tscn" id="5_rj11h"]
+[ext_resource type="PackedScene" uid="uid://bjljqausbacjw" path="res://ui.tscn" id="7_ib3t1"]
 
 [node name="Main" type="Node2D" unique_id=2000310332]
 script = ExtResource("1_k3v36")
@@ -30,5 +31,10 @@ one_shot = true
 script = ExtResource("4_f6fdm")
 
 [node name="DemoField" parent="." unique_id=1568139286 instance=ExtResource("5_rj11h")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1767120346]
+
+[node name="UI" parent="CanvasLayer" unique_id=1763726028 instance=ExtResource("7_ib3t1")]
+anchors_preset = -1
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
