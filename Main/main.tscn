@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bjljqausbacjw" path="res://HUD/ui.tscn" id="7_ib3t1"]
 
 [node name="Main" type="Node2D" unique_id=2000310332]
+visible = false
 script = ExtResource("1_k3v36")
 
 [node name="Player" parent="." unique_id=1576711874 instance=ExtResource("2_liyct")]

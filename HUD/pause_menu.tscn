@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bn8rbrujd2od"]
+
+[ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="1_1f24j"]
+[ext_resource type="Texture2D" uid="uid://5cq3nmi32to4" path="res://HUD/assets/ui_container.png" id="2_rlg28"]
+[ext_resource type="Texture2D" uid="uid://bmspw8hfy6fxc" path="res://HUD/assets/pointer.png" id="3_mm4yt"]
+[ext_resource type="Script" uid="uid://bqerkdu6pkv5k" path="res://HUD/select_pointer.gd" id="3_uga5p"]
+
+[node name="PauseMenu" type="Control" unique_id=566585682]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1975172542]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=156095667]
+offset_right = 512.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0.56078434)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1872302884]
+offset_left = 4.0
+offset_top = 91.0
+offset_right = 510.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("1_1f24j")
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer" unique_id=1014969979]
+offset_left = 35.0
+offset_top = 297.0
+offset_right = 483.0
+offset_bottom = 568.0
+texture = ExtResource("2_rlg28")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1659904275]
+offset_left = -3.0
+offset_top = 323.0
+offset_right = 510.0
+offset_bottom = 470.0
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer" unique_id=535568052 node_paths=PackedStringArray("hover_pointer", "buttons")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 12
+script = ExtResource("3_uga5p")
+hover_pointer = NodePath("../../../TextureRect")
+buttons = [NodePath("Button"), NodePath("Options"), NodePath("Quit")]
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer" unique_id=1589061032]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Resume"
+flat = true
+
+[node name="Options" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer" unique_id=1708804231]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Options"
+flat = true
+
+[node name="Quit" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer" unique_id=2084445086]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1832592122]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = 93.0
+offset_right = -51.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mm4yt")
+stretch_mode = 2
