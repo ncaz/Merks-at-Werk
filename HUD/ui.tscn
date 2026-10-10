@@ -3,17 +3,30 @@
 [ext_resource type="Script" uid="uid://dk8hyh742vr3j" path="res://HUD/ui.gd" id="1_1j3m6"]
 [ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="2_ewxn7"]
 [ext_resource type="PackedScene" uid="uid://bn8rbrujd2od" path="res://HUD/pause_menu.tscn" id="3_ewxn7"]
+[ext_resource type="Texture2D" uid="uid://c8s3pu0shgf4b" path="res://HUD/assets/mechnews.png" id="4_cmj1r"]
+[ext_resource type="Texture2D" uid="uid://d0cgxkc0bldoy" path="res://HUD/assets/triangle.png" id="5_8mrxo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fyqef"]
-load_path = "res://.godot/imported/main_ui_sprite.PNG-35bb19244ff73f8f119e9366391135f2.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_8mrxo"]
+font = ExtResource("2_ewxn7")
+font_size = 32
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pcneq"]
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_qnusm"]
 font = ExtResource("2_ewxn7")
-font_size = 32
+font_color = Color(0.15294118, 0.14117648, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyqef"]
 font = ExtResource("2_ewxn7")
-font_size = 32
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nryu1"]
+font = ExtResource("2_ewxn7")
+font_color = Color(1, 0, 0.016666412, 1)
 
 [node name="UI" type="CanvasLayer" unique_id=1804255402]
 process_mode = 3
@@ -27,33 +40,60 @@ scale = Vector2(2, 2)
 texture = SubResource("CompressedTexture2D_fyqef")
 stretch_mode = 2
 
+[node name="ColorRect10" type="ColorRect" parent="." unique_id=1705138656]
+offset_left = 159.0
+offset_top = 0.29789257
+offset_right = 330.0
+offset_bottom = 28.297894
+
 [node name="scoreText" type="Label" parent="." unique_id=399080211]
-offset_left = 320.0
-offset_right = 512.0
+offset_left = 161.0
+offset_right = 327.0
 offset_bottom = 26.0
-text = "Score: 0"
-label_settings = SubResource("LabelSettings_qnusm")
-
-[node name="moneyText" type="Label" parent="." unique_id=998461276]
-offset_left = 8.0
-offset_top = 440.0
-offset_right = 296.0
-offset_bottom = 466.0
-text = "$ 0"
-label_settings = SubResource("LabelSettings_qnusm")
-
-[node name="timeText" type="Label" parent="." unique_id=2020499012]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1.0
-offset_bottom = 23.0
-grow_horizontal = 0
-text = "Time:"
-label_settings = SubResource("LabelSettings_fyqef")
+text = "Score: 200000"
+label_settings = SubResource("LabelSettings_8mrxo")
+horizontal_alignment = 1
 
 [node name="PauseMenu" parent="." unique_id=566585682 instance=ExtResource("3_ewxn7")]
 visible = false
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=300059622]
+offset_top = 444.0
+offset_right = 512.0
+offset_bottom = 459.0
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=972570725]
+offset_top = 416.0
+offset_right = 69.0
+offset_bottom = 428.7266
+scale = Vector2(2.243889, 2.243889)
+
+[node name="ColorRect7" type="ColorRect" parent="." unique_id=646602129]
+offset_left = 3.000001
+offset_top = 419.67932
+offset_right = 52.46768
+offset_bottom = 429.18097
+scale = Vector2(2.243889, 2.243889)
+color = Color(0.75, 0.75, 0.75, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=965384104]
+offset_left = 372.0
+offset_top = 417.0
+offset_right = 434.39166
+offset_bottom = 429.47833
+scale = Vector2(2.243889, 2.243889)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1078695320]
+offset_top = 457.0
+offset_right = 512.0
+offset_bottom = 480.0
+color = Color(1, 0.19215687, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1632010933]
+offset_top = 474.0
+offset_right = 512.0
+offset_bottom = 480.0
+color = Color(1, 0.19215687, 0, 1)
 
 [node name="News Ticker2" type="Label" parent="." unique_id=1255580593]
 anchors_preset = 12
@@ -63,4 +103,106 @@ anchor_bottom = 1.0
 offset_top = -23.0
 grow_horizontal = 2
 grow_vertical = 0
+label_settings = SubResource("LabelSettings_pcneq")
 horizontal_alignment = 2
+
+[node name="Triangle3" type="Sprite2D" parent="." unique_id=1630254948]
+position = Vector2(48.999996, 467.99997)
+scale = Vector2(0.25829083, 0.2115616)
+texture = ExtResource("5_8mrxo")
+flip_v = true
+
+[node name="Mechnews" type="Sprite2D" parent="." unique_id=2125998671]
+position = Vector2(18.5, 461.37152)
+scale = Vector2(0.21637428, 0.217877)
+texture = ExtResource("4_cmj1r")
+
+[node name="Triangle2" type="Sprite2D" parent="." unique_id=1469978142]
+position = Vector2(357.99994, 430.8745)
+scale = Vector2(0.28571293, 0.24218997)
+texture = ExtResource("5_8mrxo")
+flip_h = true
+
+[node name="Triangle4" type="Sprite2D" parent="." unique_id=1892408439]
+position = Vector2(169.00002, 430.38144)
+scale = Vector2(0.29591766, 0.25084022)
+texture = ExtResource("5_8mrxo")
+
+[node name="Triangle5" type="Sprite2D" parent="." unique_id=1256703663]
+position = Vector2(344.00003, 14.297893)
+scale = Vector2(0.29591766, 0.25084022)
+texture = ExtResource("5_8mrxo")
+flip_v = true
+
+[node name="Triangle6" type="Sprite2D" parent="." unique_id=1274860052]
+position = Vector2(145, 14.297893)
+scale = Vector2(0.29591766, 0.25084022)
+texture = ExtResource("5_8mrxo")
+flip_h = true
+flip_v = true
+
+[node name="moneyText" type="Label" parent="." unique_id=998461276]
+offset_left = 3.000001
+offset_top = 413.0
+offset_right = 38.0
+offset_bottom = 426.0
+scale = Vector2(2.243889, 2.243889)
+theme_override_colors/font_color = Color(0, 0.03137255, 1, 1)
+text = "$ 0"
+label_settings = SubResource("LabelSettings_qnusm")
+
+[node name="ColorRect8" type="ColorRect" parent="." unique_id=671264855]
+offset_left = 444.00003
+offset_top = 419.0
+offset_right = 467.61972
+offset_bottom = 429.6957
+scale = Vector2(2.243889, 2.243889)
+color = Color(0.75, 0.75, 0.75, 1)
+metadata/_edit_group_ = true
+
+[node name="timeText" type="Label" parent="." unique_id=2020499012]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.9250001
+anchor_right = 1.0
+anchor_bottom = 0.9250001
+offset_left = -62.99997
+offset_top = -30.00003
+offset_right = -42.99997
+offset_bottom = -17.00003
+grow_horizontal = 0
+scale = Vector2(2.243889, 2.243889)
+text = "9:30"
+label_settings = SubResource("LabelSettings_fyqef")
+horizontal_alignment = 2
+metadata/_edit_group_ = true
+
+[node name="LIVE text" type="Label" parent="." unique_id=1295803232]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.9250001
+anchor_right = 1.0
+anchor_bottom = 0.9250001
+offset_left = -125.0
+offset_top = -29.00003
+offset_right = -101.0
+offset_bottom = -16.00003
+grow_horizontal = 0
+scale = Vector2(2.243889, 2.243889)
+text = "LIVE"
+label_settings = SubResource("LabelSettings_nryu1")
+horizontal_alignment = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=1650390987]
+offset_top = 471.0
+offset_right = 37.0
+offset_bottom = 480.0
+
+[node name="ColorRect9" type="ColorRect" parent="." unique_id=1668916905]
+offset_left = 378.0
+offset_top = 427.99997
+offset_right = 384.0
+offset_bottom = 433.99997
+color = Color(1, 0, 0, 1)
+metadata/_edit_group_ = true
