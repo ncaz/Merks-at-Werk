@@ -20,6 +20,9 @@ func _process(_delta: float) -> void:
 		ticker_increment = 0
 	$ScoreText.text = "Score: " + str(Globals.score)
 
+	#Increases the timer every second
+	$TimerText.text = "Timer: " + str(int(Globals.field_time_left))
+
 func resume_game():
 	get_tree().paused = false
 	hide()

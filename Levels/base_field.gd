@@ -3,7 +3,7 @@ extends Node2D
 
 @export var spawn_position : Vector2 = Vector2.ZERO
 @export var bonus_points  : int = 40
-@export var timer_enabled : bool = false
+@export var timer_enabled : bool = true
 @export var max_time : int = 60
 
 @export var missile_scene : PackedScene = preload("res://Enemy/missile_enemy.tscn")
