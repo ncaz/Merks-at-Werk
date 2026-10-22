@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://w1soc5n7vwdm" path="res://Levels/base_field.tscn" id="1_j6bkf"]
 [ext_resource type="Texture2D" uid="uid://cfy21fcc5rtx0" path="res://Tilesets/CityTiles/city_tiles.png" id="2_7y427"]
 [ext_resource type="Script" uid="uid://bx4y2jx5cj7b2" path="res://Levels/01/field_1.gd" id="2_0042q"]
+[ext_resource type="AudioStream" uid="uid://djkeqcf2c6dpu" path="res://Assets/Music/Track01_Gameplay.mp3" id="3_oaw8j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oaw8j"]
 texture = ExtResource("2_7y427")
@@ -61,8 +62,7 @@ sources/0 = SubResource("TileSetAtlasSource_oaw8j")
 
 [node name="Field1" unique_id=1026051808 instance=ExtResource("1_j6bkf")]
 script = ExtResource("2_0042q")
-timer_enabled = true
-max_time = 30
+bgm = ExtResource("3_oaw8j")
 
 [node name="Parallax2D" parent="ParallaxBackground" parent_id_path=PackedInt32Array(1386508579) index="0" unique_id=1690788066]
 follow_viewport = false
@@ -73,10 +73,9 @@ tile_map_data = PackedByteArray("AAAAAAEAAAACAAEAAAAAAAAAAAANAAQAAAAAAAIAAAACAAI
 tile_set = SubResource("TileSet_s271d")
 
 [node name="FieldTimer" parent="." index="4" unique_id=1469194110]
-wait_time = 30.0
+wait_time = 3.0
 
 [node name="SpawnTimer" parent="." index="5" unique_id=2117181400]
-wait_time = 1.0
 autostart = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

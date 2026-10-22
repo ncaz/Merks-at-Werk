@@ -1,13 +1,10 @@
 extends Node2D
 
 @onready var World = $World
-@onready var BGM = $BGM
 
 var level_1_bgm = preload("res://Assets/Music/Track01_Gameplay.mp3")
 func _ready() -> void:
-	if not BGM.playing:
-		BGM.stream = level_1_bgm
-		BGM.play()
+	pass
 
 func _process(_delta: float) -> void:
 

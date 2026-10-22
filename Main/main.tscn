@@ -39,6 +39,4 @@ script = ExtResource("4_f6fdm")
 
 [node name="ScreenWipe" parent="." unique_id=1849302711 instance=ExtResource("8_wipe")]
 
-[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1567090208]
-
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

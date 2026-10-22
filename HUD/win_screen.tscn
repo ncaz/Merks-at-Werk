@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cwin7screen4b"]
+[gd_scene format=3 uid="uid://cwin7screen4b"]
 
 [ext_resource type="Script" uid="uid://dwin2scr8pt5k" path="res://HUD/win_screen.gd" id="1_win"]
 
