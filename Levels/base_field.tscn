@@ -23,7 +23,7 @@ wait_time = 60.0
 one_shot = true
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=2117181400]
-wait_time = 300.0
+wait_time = 3.0
 
 [node name="Powerups" type="Node2D" parent="." unique_id=1354976689]
 

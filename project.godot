@@ -20,6 +20,7 @@ config/icon="uid://4q335xxs2p"
 Globals="*uid://bt2mpwavgh3p2"
 CrtSettings="*uid://xskpfo66m6g5"
 HitAnim="*uid://dntfj5ncfimnu"
+AudioManager="*uid://c5m0ud0ew2e0j"
 
 [display]
 

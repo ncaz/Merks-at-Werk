@@ -98,6 +98,9 @@ func explode():
 	
 func get_sprite():
 	return $Sprite
-
+	
+func get_sprites():
+	return $Mecha.get_children()
+	
 func _on_despawn_timer_timeout() -> void:
 	explode()

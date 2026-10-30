@@ -1,14 +1,13 @@
-[gd_scene format=4 uid="uid://9aayxcsxq6gig"]
+[gd_scene format=3 uid="uid://dc007vgw8kggc"]
 
-[ext_resource type="Script" uid="uid://p46gbhcqwnopc" path="res://Powerups/powerup.gd" id="1_pwrup"]
-[ext_resource type="Texture2D" path="res://Powerups/powerup.png" id="2_pwrup"]
+[ext_resource type="Script" uid="uid://ojxw8nqnt6oa" path="res://Powerups/powerup.gd" id="1_pwrup"]
+[ext_resource type="Texture2D" uid="uid://bgaj22la0rkew" path="res://Powerups/powerup.png" id="2_pwrup"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pwrup"]
 radius = 12.0
 
 [node name="Powerup" type="Area2D" unique_id=227868740 groups=["looping_entity", "powerup"]]
 collision_layer = 16
-collision_mask = 1
 script = ExtResource("1_pwrup")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1262660926]

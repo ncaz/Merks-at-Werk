@@ -11,7 +11,7 @@
 [node name="MissileEnemy" unique_id=1721345674 instance=ExtResource("1_ira0i")]
 collision_mask = 3
 motion_mode = 1
-speed = 300.0
+speed = 275.0
 homing = true
 drop_scene = null
 drop_chance = 0.0
@@ -25,19 +25,19 @@ texture = ExtResource("2_f2qha")
 [node name="DespawnTimer" parent="." index="2" unique_id=2055281637]
 one_shot = true
 
-[node name="mecha" type="Node2D" parent="." index="3" unique_id=271407047]
+[node name="Mecha" type="Node2D" parent="." index="3" unique_id=271407047]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("3_i7xja")
 front_direction = Vector2(0, 1)
 
-[node name="Feet2" type="Sprite2D" parent="mecha" index="0" unique_id=676638685]
+[node name="Feet2" type="Sprite2D" parent="Mecha" index="0" unique_id=676638685]
 texture = ExtResource("4_i7xja")
 
-[node name="Torso2" type="Sprite2D" parent="mecha" index="1" unique_id=1981911073]
+[node name="Torso2" type="Sprite2D" parent="Mecha" index="1" unique_id=1981911073]
 texture = ExtResource("5_sryd8")
 
-[node name="LeftArm2" type="Sprite2D" parent="mecha" index="2" unique_id=2120581714]
+[node name="LeftArm2" type="Sprite2D" parent="Mecha" index="2" unique_id=2120581714]
 texture = ExtResource("6_1h0k7")
 
-[node name="Head2" type="Sprite2D" parent="mecha" index="3" unique_id=1537759573]
+[node name="Head2" type="Sprite2D" parent="Mecha" index="3" unique_id=1537759573]
 texture = ExtResource("7_x6prb")

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var World = $World
 
+var level_1_bgm = preload("res://Assets/Music/Track01_Gameplay.mp3")
 func _ready() -> void:
 	pass
 
@@ -41,14 +42,25 @@ func _process(_delta: float) -> void:
 				if entity.global_position.y > 0:
 					create_sprite_copy(entity, Vector2(0, -World.map_size.y))
 
-
-
 func create_sprite_copy(entity: Node2D, offset: Vector2) -> void:
-	var source_sprite: Sprite2D = entity.get_sprite()
-	var sprite_copy: Sprite2D = source_sprite.duplicate()
+	
+	var source_sprites: Array
+	if "get_sprites" in entity:
+		source_sprites = entity.get_sprites()
+	elif "get_sprites" in entity:
+		source_sprites.append(entity.get_sprite())
+		
+	for source_sprite in source_sprites:
+		var sprite_copy: Sprite2D = source_sprite.duplicate()
+		$CopiedEntities.add_child(sprite_copy)
+		sprite_copy.global_transform = source_sprite.global_transform
+		sprite_copy.global_position += offset
+		
+	#var source_sprite: Sprite2D = entity.get_sprite()
+	#var sprite_copy: Sprite2D = source_sprite.duplicate()
 
-	$CopiedEntities.add_child(sprite_copy)
-	sprite_copy.global_transform = source_sprite.global_transform
+	#$CopiedEntities.add_child(sprite_copy)
+	#sprite_copy.global_transform = source_sprite.global_transform
 	
 	# Move copy to corresponding side of map.
-	sprite_copy.global_position += offset
+	#sprite_copy.global_position += offset

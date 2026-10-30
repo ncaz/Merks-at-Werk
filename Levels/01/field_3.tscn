@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://b5hrgl144g8l6"]
 
 [ext_resource type="PackedScene" uid="uid://w1soc5n7vwdm" path="res://Levels/base_field.tscn" id="1_cbdbv"]
+[ext_resource type="AudioStream" uid="uid://djkeqcf2c6dpu" path="res://Assets/Music/Track01_Gameplay.mp3" id="2_1t8cn"]
 [ext_resource type="PackedScene" uid="uid://r136u0f8rqfk" path="res://Station/station.tscn" id="2_u4uol"]
 [ext_resource type="Texture2D" uid="uid://cfy21fcc5rtx0" path="res://Tilesets/CityTiles/city_tiles.png" id="3_1t8cn"]
 
@@ -60,6 +61,7 @@ texture = ExtResource("3_1t8cn")
 sources/0 = SubResource("TileSetAtlasSource_jqx8e")
 
 [node name="Field3" unique_id=1026051808 instance=ExtResource("1_cbdbv")]
+bgm = ExtResource("2_1t8cn")
 
 [node name="SpawnPosition" parent="." index="0" unique_id=1776380402]
 position = Vector2(0, 360)

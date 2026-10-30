@@ -23,8 +23,6 @@ var current_field_index: int = 0
 var map_size : Vector2
 var transitioning: bool = false
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_level_index = 1

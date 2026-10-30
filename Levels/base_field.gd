@@ -3,10 +3,12 @@ extends Node2D
 
 @export var spawn_position : Vector2 = Vector2.ZERO
 @export var bonus_points  : int = 40
-@export var timer_enabled : bool = false
-@export var max_time : int = 60
+@export var timer_enabled : bool = true
 
 @export var missile_scene : PackedScene = preload("res://Enemy/missile_enemy.tscn")
+
+@export_category("Audio")
+@export var  bgm: AudioStream
 
 @onready var field_timer: Node = $FieldTimer
 @onready var spawn_timer: Node = $SpawnTimer
@@ -23,9 +25,8 @@ func _ready():
 	Globals.player_position = spawn_position
 	if timer_enabled:
 		print("start field timer")
-		field_timer.wait_time = max_time
 		field_timer.start()
-	
+	print("spawn_timer.wait_time = {0}".format([spawn_timer.wait_time]))
 	# Get map size and bounds using tile map.
 	var tile_map = $ParallaxBackground/Parallax2D/TileMapLayer
 	
@@ -45,7 +46,9 @@ func _ready():
 	
 	for s in stations.get_children():
 		s.destroyed.connect(_check_all_stations_destroyed)
-	
+
+	AudioManager.play(bgm)
+
 	print("map bounds = ", Globals.map_bounds)
 	print("map size = ", Globals.map_size)
 	print("spawn position = ", spawn_position)
@@ -82,8 +85,7 @@ func _on_spawn_timer_timeout() -> void:
 	print("Booyakasha! gp = ", missile.global_position, ", edge = ", edge_pos)
 	spawn_timer.start()
 
-"""This function can be overriden per field.
-For example, Level 1, Field 1 automatically ends after 30 seconds."""
+
 func _check_all_stations_destroyed():
 	print("Station count: ", get_tree().get_node_count_in_group("station"), ", Destroyed count: ", get_tree().get_node_count_in_group("destroyed"))
 	if (
@@ -94,7 +96,8 @@ func _check_all_stations_destroyed():
 		await get_tree().create_timer(2.5).timeout
 		field_clear.emit()
 
-
+"""This function can be overriden per field.
+For example, Level 1, Field 1 automatically ends after 30 seconds."""
 #normally bad things should happen if the timer clears
 # before the player completes the level
 func _on_field_timer_timeout() -> void:
