@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bm1c41y6efgv8"]
+
+[ext_resource type="Texture2D" uid="uid://wwqo03vctun0" path="res://HUD/assets/ShopBackColor.png" id="1_10582"]
+[ext_resource type="PackedScene" uid="uid://o7oefdbr7uhg" path="res://HUD/shopEntry.tscn" id="2_kojw5"]
+[ext_resource type="Texture2D" uid="uid://cdb8krqs73tvc" path="res://HUD/assets/ShopBut1 4.png" id="3_3qce5"]
+[ext_resource type="Texture2D" uid="uid://coqhu6isbf1xd" path="res://HUD/assets/ShopBut.png" id="4_lqkdr"]
+[ext_resource type="Texture2D" uid="uid://biovh6oag1bap" path="res://HUD/assets/ShopBut1 2.png" id="5_kln3a"]
+[ext_resource type="Texture2D" uid="uid://0y7lxv3qndd" path="res://HUD/assets/ShopBut1.png" id="6_gx0vx"]
+
+[node name="Shop" type="Control" unique_id=264461226]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1511117116]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=393107727]
+offset_right = 256.0
+offset_bottom = 240.0
+texture = ExtResource("1_10582")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" unique_id=823550054]
+offset_left = 32.0
+offset_top = 53.5
+offset_right = 238.5
+offset_bottom = 239.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer" unique_id=2046578192]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 65
+
+[node name="ShopEntry" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=1768470186 instance=ExtResource("2_kojw5")]
+layout_mode = 2
+
+[node name="ShopEntry2" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=1141103003 instance=ExtResource("2_kojw5")]
+layout_mode = 2
+
+[node name="ShopEntry3" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=245945519 instance=ExtResource("2_kojw5")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1636788703]
+offset_right = 256.0
+offset_bottom = 240.0
+texture = ExtResource("3_3qce5")
+
+[node name="close" type="Button" parent="CanvasLayer" unique_id=247308969]
+offset_left = 210.0
+offset_top = 192.0
+offset_right = 250.0
+offset_bottom = 230.0
+icon = ExtResource("4_lqkdr")
+flat = true
+
+[node name="Label" type="Label" parent="CanvasLayer/close" unique_id=1812674937]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.5
+offset_right = 38.5
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer" unique_id=195983706]
+offset_left = 173.0
+offset_top = 17.0
+offset_right = 239.0
+offset_bottom = 46.0
+icon = ExtResource("5_kln3a")
+flat = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Button2" unique_id=1838124584]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.5
+offset_right = 55.0
+offset_bottom = 19.5
+text = "Powerup"
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1583228625]
+offset_left = 18.0
+offset_top = 17.0
+offset_right = 84.0
+offset_bottom = 46.0
+icon = ExtResource("6_gx0vx")
+flat = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Button" unique_id=605173053]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 7.0
+offset_right = 57.0
+offset_bottom = 20.0
+text = "Moves"

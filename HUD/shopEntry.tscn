@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://o7oefdbr7uhg"]
+
+[ext_resource type="Texture2D" uid="uid://ck5jdcuxnv864" path="res://HUD/assets/ShopEntry 2.png" id="1_owrjl"]
+[ext_resource type="Script" uid="uid://cf3raxm12ej8j" path="res://HUD/shop_entry_display.gd" id="1_yb22b"]
+
+[node name="ShopEntry" type="Control" unique_id=1768470186]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yb22b")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1851953646]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_owrjl")
+
+[node name="name" type="Label" parent="." unique_id=1695870172]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 85.0
+offset_bottom = 16.0
+text = "NAME"
+
+[node name="cost" type="Label" parent="." unique_id=1280298932]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 3.0
+offset_right = 193.0
+offset_bottom = 16.0
+text = "COST"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="." unique_id=839882400]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 19.0
+offset_right = 186.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 14
+text = "Description"
+
+[node name="icon" type="TextureRect" parent="." unique_id=675890432]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 18.0
+offset_right = 46.0
+offset_bottom = 48.0
+
+[node name="Button" type="Button" parent="." unique_id=988435709]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 16.0
+offset_right = 192.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.6961577, 0.84272903, 0.82132983, 1)
+theme_override_font_sizes/font_size = 11
+text = "B
+U
+Y"
