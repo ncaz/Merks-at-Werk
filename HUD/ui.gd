@@ -19,9 +19,13 @@ func _process(_delta: float) -> void:
 	else:
 		ticker_increment = 0
 	$ScoreText.text = "Score: " + str(Globals.score)
-
 	$TimerText.text = "Time: " + str(int(Globals.field_time_left))
 
 func resume_game():
 	get_tree().paused = false
 	hide()
+	
+func flash_job():
+	if $"Flash Job/AnimationPlayer".is_playing():
+		$"Flash Job/AnimationPlayer".stop()
+	$"Flash Job/AnimationPlayer".play("Flash Job")

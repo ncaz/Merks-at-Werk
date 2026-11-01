@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://crtdv5djku0ij" path="res://Main/main.gd" id="1_k3v36"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://Player/player.tscn" id="2_liyct"]
-[ext_resource type="Script" uid="uid://bqjbnbfd7jlob" path="res://Player/camera.gd" id="3_ib3t1"]
 [ext_resource type="Script" uid="uid://cxfmjbimw3b1d" path="res://enemy_spawner.gd" id="4_f6fdm"]
 [ext_resource type="PackedScene" uid="uid://dwuu4ml8r3hb7" path="res://Main/world.tscn" id="6_liyct"]
 [ext_resource type="PackedScene" uid="uid://bjljqausbacjw" path="res://HUD/ui.tscn" id="7_ib3t1"]
@@ -19,9 +18,6 @@ slide_on_ceiling = true
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
-
-[node name="Camera" type="Camera2D" parent="Player" unique_id=1490524235]
-script = ExtResource("3_ib3t1")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1134912590]
 one_shot = true

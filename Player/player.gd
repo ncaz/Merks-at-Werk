@@ -33,6 +33,12 @@ var exiting: bool = false
 
 @export var health: int = 5
 
+var flashbang_dist: int = 500
+const flying_friend = preload("res://Powerups/flying_friend.tscn")
+var is_above_level: bool = false
+
+signal flash_job
+
 class Dodge:
 	var remaining_duration: float
 	var axis: Vector2
@@ -65,6 +71,8 @@ func _physics_process(delta: float) -> void:
 		Globals.player_position = global_position
 		return
 	
+	check_powerups()
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	move(delta)
@@ -74,10 +82,10 @@ func _physics_process(delta: float) -> void:
 	Globals.player_position = global_position
 	
 	debug_action()
+	
 func is_orthogonal(axis_1: Vector2, axis_2: Vector2) -> bool:
 	return is_zero_approx(axis_1.dot(axis_2))
-
-
+	
 func move(delta: float):
 	if exiting:
 		move_exit(delta)
@@ -124,6 +132,20 @@ func move_default(delta: float):
 	velocity += accel
 	velocity = velocity.limit_length(MAX_SPEED)
 
+func check_powerups():
+	if get_flashbang_pressed():
+		for enemy in get_tree().get_nodes_in_group("enemies"):
+			if enemy.global_position.distance_to(global_position) < flashbang_dist:
+				if "spin_out" in enemy:
+					enemy.spin_out()
+					flash_job.emit()
+	if Input.is_action_just_pressed("Friendship"):
+		fly_above_level()
+		return
+		print("FUFHRRFHIRFNIFRUIRF")
+		var friend = flying_friend.instantiate()
+		friend.global_position = global_position
+		get_parent().add_child(friend)
 
 func rotate_default(_delta: float):
 	rotation_degrees = rad_to_deg(atan2(axis.y, axis.x))
@@ -132,6 +154,8 @@ func rotate_default(_delta: float):
 func get_dodge_pressed() -> bool:
 	return Input.is_action_pressed("Dodge")
 
+func get_flashbang_pressed() -> bool:
+	return Input.is_action_just_pressed("Use Flashbang")
 
 func get_input_axis():
 	return Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
@@ -238,3 +262,18 @@ func move_bullet_hell(delta: float) -> void:
 	var input : Vector2 = get_input_axis()
 	velocity = input.normalized() * speed  
 	rotate_default(delta)                 
+
+func fly_above_level():
+	$HitBox.disabled = true
+	z_index = 1
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "scale", Vector2(5.0, 5.0), 1.0)
+	$HangAboveTimer.start()
+
+func _on_hang_above_timer_timeout() -> void:
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 1.0)
+	$HitBox.disabled = false
+	z_index = 0
