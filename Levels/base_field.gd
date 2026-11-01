@@ -21,6 +21,8 @@ signal field_clear
 var map_size: Vector2
 
 func _ready():
+	
+	$ParallaxBackground.scroll_ignore_camera_zoom = true
 	player.global_position = spawn_position
 	Globals.player_position = spawn_position
 	if timer_enabled:

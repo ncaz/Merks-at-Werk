@@ -27,4 +27,7 @@ texture = ExtResource("1_7k104")
 [node name="DespawnTimer" type="Timer" parent="." unique_id=2055281637]
 wait_time = 5.0
 
+[node name="SpinoutTimer" type="Timer" parent="." unique_id=1254174198]
+
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="timeout" from="SpinoutTimer" to="." method="_on_spinout_timer_timeout"]

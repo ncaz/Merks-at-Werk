@@ -4,7 +4,6 @@ extends Area2D
 @export var speed = 800
 @export var damage = 1
 
-@onready var on_screen_notifier = $Notifier
 @onready var despawn_timer = $DespawnTimer
 
 var axis = Vector2.UP
