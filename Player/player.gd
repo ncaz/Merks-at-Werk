@@ -130,7 +130,7 @@ func move_default(delta: float):
 		current_acceleration = ACCELERATION - FRICTION
 	var accel = axis * current_acceleration * delta
 	velocity += accel
-	velocity = velocity.limit_length(MAX_SPEED)
+	velocity = velocity.limit_length(MAX_SPEED) if not Input.is_action_pressed("DebugStop") else Vector2.ZERO
 
 func check_powerups():
 	if get_flashbang_pressed():
