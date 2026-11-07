@@ -86,8 +86,7 @@ func _on_spawn_timer_timeout() -> void:
 	add_child(missile)
 	print("Booyakasha! gp = ", missile.global_position, ", edge = ", edge_pos)
 	spawn_timer.start()
-
-
+	
 func _check_all_stations_destroyed():
 	print("Station count: ", get_tree().get_node_count_in_group("station"), ", Destroyed count: ", get_tree().get_node_count_in_group("destroyed"))
 	if (

@@ -29,3 +29,6 @@ func flash_job():
 	if $"Flash Job/AnimationPlayer".is_playing():
 		$"Flash Job/AnimationPlayer".stop()
 	$"Flash Job/AnimationPlayer".play("Flash Job")
+
+func flash_warning():
+	$"Warning Symbol/AnimationPlayer".play("Warning")
