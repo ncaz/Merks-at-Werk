@@ -189,6 +189,10 @@ func set_shot_pattern(pattern: ShotPattern) -> void:
 		weapon_tier = tier
 	weapon_changed.emit(pattern)
 
+#added for the resource management
+func set_back_shot_pattern(pattern: ShotPattern) -> void:
+	back_shot_pattern = pattern
+	weapon_changed.emit(pattern)
 
 func start_exit() -> void:
 	exiting = true

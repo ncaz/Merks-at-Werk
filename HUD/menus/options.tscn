@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5v5xpoqyhrwb"]
 
-[ext_resource type="Script" uid="uid://5tkn7wstry31" path="res://HUD/options.gd" id="1_0yqsn"]
+[ext_resource type="Script" uid="uid://5tkn7wstry31" path="res://HUD/menus/options.gd" id="1_0yqsn"]
 [ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="1_83br3"]
 
 [node name="Options" type="Control" unique_id=596716432 node_paths=PackedStringArray("crt_toggle")]
