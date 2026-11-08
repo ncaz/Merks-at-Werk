@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dk8hyh742vr3j" path="res://HUD/ui.gd" id="1_1j3m6"]
 [ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="2_ewxn7"]
-[ext_resource type="PackedScene" uid="uid://bn8rbrujd2od" path="res://HUD/pause_menu.tscn" id="3_ewxn7"]
+[ext_resource type="PackedScene" uid="uid://bn8rbrujd2od" path="res://HUD/menus/pause_menu.tscn" id="3_ewxn7"]
 [ext_resource type="Texture2D" uid="uid://c8s3pu0shgf4b" path="res://HUD/assets/mechnews.png" id="4_cmj1r"]
 [ext_resource type="Texture2D" uid="uid://d0cgxkc0bldoy" path="res://HUD/assets/triangle.png" id="5_8mrxo"]
 [ext_resource type="Texture2D" uid="uid://biqel4a582bp0" path="res://job.png" id="6_pcneq"]

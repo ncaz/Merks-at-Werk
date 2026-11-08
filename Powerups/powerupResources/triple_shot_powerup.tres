@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="bulletPowerup" format=3 uid="uid://dnkkr3pmwyd3v"]
+
+[ext_resource type="Resource" uid="uid://dxpcuer07gm7" path="res://Bullets/tri_shot.tres" id="1_bd3of"]
+[ext_resource type="Script" uid="uid://w71gi4co5jku" path="res://Powerups/powerupResources/scripts/bullet_powerup_move.gd" id="1_c2604"]
+
+[resource]
+script = ExtResource("1_c2604")
+pattern = ExtResource("1_bd3of")
+id = &"tripleshot"
+display_name = "Triple Shot"
+description = "Shoot three bullets at once!"
