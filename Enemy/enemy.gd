@@ -27,6 +27,8 @@ var current_speed: float = 0.0
 @export_category("Scoring")
 @export var score: int = 50
 
+var spinning_out: bool = false
+
 func _ready() -> void:
 	if !homing:
 		rotation = axis.angle()
@@ -38,11 +40,13 @@ func _physics_process(delta: float) -> void:
 	if ramping_speed:
 		current_speed = lerp(current_speed, max_speed, delta * ramp_weight)
 		speed = current_speed
-		
+			
 	if speed != 0:
 		
-		if homing:
-			
+		if spinning_out:
+			rotation += 5 * delta
+			axis = Vector2.RIGHT.rotated(rotation)
+		elif homing:
 			var to_player: Vector2 = Globals.player_position - global_position
 			# Choose the shortest direction across each wrapped boundary.
 			to_player.x = wrapf(
@@ -103,4 +107,19 @@ func get_sprites():
 	return $Mecha.get_children()
 	
 func _on_despawn_timer_timeout() -> void:
+	explode()
+	
+func spin_out():
+	if !spinning_out:
+		spinning_out = true
+		max_speed *= 2
+		speed = max_speed
+		
+		$SpinoutTimer.wait_time = randf_range(3.0, 5.5)
+		$SpinoutTimer.start()
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "scale", Vector2(0.7, 0.7), $SpinoutTimer.wait_time)
+	
+func _on_spinout_timer_timeout() -> void:
 	explode()

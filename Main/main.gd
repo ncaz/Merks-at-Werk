@@ -4,7 +4,7 @@ extends Node2D
 
 var level_1_bgm = preload("res://Assets/Music/Track01_Gameplay.mp3")
 func _ready() -> void:
-	pass
+	$Player.connect("flash_job", $CanvasLayer/UI.flash_job)
 
 func _process(_delta: float) -> void:
 

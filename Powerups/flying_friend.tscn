@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://mdq1pjj6l6rx"]
+
+[ext_resource type="Script" uid="uid://cxf1rnewqhfen" path="res://Powerups/flying_friend.gd" id="1_4m8wd"]
+[ext_resource type="Texture2D" uid="uid://biqel4a582bp0" path="res://job.png" id="2_x3t2s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3sutc"]
+radius = 31.06445
+
+[node name="Flying Friend" type="Area2D" unique_id=1657494591]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_4m8wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720758719]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_x3t2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356750692]
+shape = SubResource("CircleShape2D_3sutc")
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=552044759]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
