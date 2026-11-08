@@ -51,11 +51,11 @@ func _process(_delta: float) -> void:
 func create_sprite_copy(entity: Node2D, offset: Vector2) -> void:
 	
 	var source_sprites: Array
-	if "get_sprite" in entity:
-		source_sprites.append(entity.get_sprite())
-	elif "get_sprites" in entity:
+	if "get_sprites" in entity:
 		source_sprites.append_array(entity.get_sprites())
-		
+	elif "get_sprite" in entity:
+		source_sprites.append(entity.get_sprite())
+
 	for source_sprite in source_sprites:
 		var sprite_copy: Sprite2D = source_sprite.duplicate()
 		$CopiedEntities.add_child(sprite_copy)

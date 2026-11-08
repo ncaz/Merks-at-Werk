@@ -74,7 +74,8 @@ func _physics_process(delta: float) -> void:
 func hit(damage=1):
 	if health <= 0:
 		return
-	HitAnim.hit_flash(get_sprite())
+	for sprite in get_sprites():
+		HitAnim.hit_flash(sprite)
 	health -= damage
 	if health <= 0:
 		Globals.score += score
