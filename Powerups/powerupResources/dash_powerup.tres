@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="powerupMove" format=3 uid="uid://d028be6do0cyw"]
+
+[ext_resource type="Script" uid="uid://ddn8ftd4f0wx" path="res://Powerups/powerupResources/scripts/powerup_move.gd" id="1_n0evd"]
+
+[resource]
+script = ExtResource("1_n0evd")
+id = &"dodge"
+display_name = "Dodge"
+description = "Press Shift to quickly dodge to your left or right"

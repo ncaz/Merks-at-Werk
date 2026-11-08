@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dk8hyh742vr3j" path="res://HUD/ui.gd" id="1_1j3m6"]
 [ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="2_ewxn7"]
-[ext_resource type="PackedScene" uid="uid://bn8rbrujd2od" path="res://HUD/pause_menu.tscn" id="3_ewxn7"]
+[ext_resource type="PackedScene" uid="uid://bn8rbrujd2od" path="res://HUD/menus/pause_menu.tscn" id="3_ewxn7"]
 [ext_resource type="Texture2D" uid="uid://c8s3pu0shgf4b" path="res://HUD/assets/mechnews.png" id="4_cmj1r"]
 [ext_resource type="Texture2D" uid="uid://d0cgxkc0bldoy" path="res://HUD/assets/triangle.png" id="5_8mrxo"]
+[ext_resource type="Texture2D" uid="uid://biqel4a582bp0" path="res://job.png" id="6_pcneq"]
+[ext_resource type="AudioStream" uid="uid://ukf0xodrjve2" path="res://explosion.wav" id="7_vgrgu"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="8_vgrgu"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fyqef"]
 
@@ -27,6 +30,177 @@ font_color = Color(1, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_nryu1"]
 font = ExtResource("2_ewxn7")
 font_color = Color(1, 0, 0.016666412, 1)
+
+[sub_resource type="Animation" id="Animation_mi5n8"]
+resource_name = "Flash Job"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JobFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JobFlash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.0666667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.63529414), Color(1, 1, 1, 0.22352941), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_vgrgu")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_yu8mg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JobFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JobFlash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v11f2"]
+_data = {
+&"Flash Job": SubResource("Animation_mi5n8"),
+&"RESET": SubResource("Animation_yu8mg")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_3t73g"]
+spacing_bottom = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_3sutc"]
+line_spacing = 0.0
+font = SubResource("FontVariation_3t73g")
+font_size = 31
+font_color = Color(1, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_v11f2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.085, 0.085)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8j7r1"]
+resource_name = "Warning"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.085, 0.085), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4030665, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8201"]
+_data = {
+&"RESET": SubResource("Animation_v11f2"),
+&"Warning": SubResource("Animation_8j7r1")
+}
 
 [node name="UI" type="CanvasLayer" unique_id=1804255402]
 process_mode = 3
@@ -211,3 +385,63 @@ metadata/_edit_group_ = true
 offset_right = 40.0
 offset_bottom = 13.0
 text = "Time: "
+
+[node name="Flash Job" type="Control" parent="." unique_id=1662448521]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JobFlash" type="TextureRect" parent="Flash Job" unique_id=1585810209]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pcneq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flash Job" unique_id=753204797]
+libraries/ = SubResource("AnimationLibrary_v11f2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Flash Job" unique_id=1561238675]
+volume_db = 10.0
+
+[node name="Warning Symbol" type="Control" parent="." unique_id=817825337]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Warning Symbol" unique_id=951660330]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_right = 56.5
+offset_bottom = 40.0
+grow_horizontal = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.085, 0.085)
+
+[node name="TextureRect2" type="TextureRect" parent="Warning Symbol/HBoxContainer" unique_id=75432003]
+custom_maximum_size = Vector2(31, 31)
+layout_mode = 2
+texture = ExtResource("8_vgrgu")
+
+[node name="Label" type="Label" parent="Warning Symbol/HBoxContainer" unique_id=183722621]
+layout_mode = 2
+text = "Warning"
+label_settings = SubResource("LabelSettings_3sutc")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Warning Symbol" unique_id=1658190515]
+libraries/ = SubResource("AnimationLibrary_e8201")

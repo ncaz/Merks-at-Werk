@@ -21,6 +21,7 @@ region = Rect2(64, 0, 32, 32)
 radius = 5.3851647
 
 [node name="Player" type="CharacterBody2D" unique_id=1576711874 groups=["looping_entity", "player"]]
+z_as_relative = false
 collision_mask = 0
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
@@ -61,4 +62,10 @@ position = Vector2(-8, 0)
 wait_time = 0.3
 one_shot = true
 
+[node name="HangAboveTimer" type="Timer" parent="." unique_id=1654134871]
+wait_time = 4.0
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1785087447]
+
 [connection signal="timeout" from="ShootSpeed" to="." method="_on_ShootSpeed_timeout"]
+[connection signal="timeout" from="HangAboveTimer" to="." method="_on_hang_above_timer_timeout"]
