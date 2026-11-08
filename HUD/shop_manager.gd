@@ -6,13 +6,15 @@ const ShopEntry = preload("res://HUD/shopEntry.tscn")
 
 var current_category := "moves"
 
-# Which abilities the player has bought. 
-#TO DO: Move this into globals later
-var owned_ids: Array[StringName] = []
 @onready var item_list = $CanvasLayer/ScrollContainer/ItemList
 @onready var moves_button = $CanvasLayer/MovesButton
 @onready var powerup_button = $CanvasLayer/PowerupButton
 @onready var close_button = $CanvasLayer/CloseButton
+
+var unlock_ids_0: Array[StringName] = ["dash"]
+var unlock_ids_1: Array[StringName] = []
+var unlock_ids_2: Array[StringName] = []
+var current_avaliable_ids: Array[StringName] = []
 
 
 func _ready() -> void:
@@ -52,10 +54,11 @@ func refresh() -> void:
 
 
 func is_owned(ability: PowerupMove) -> bool:
-	return ability.id in owned_ids
+	return ability.id in Globals.owned_ids
 
 
 func can_afford(ability: PowerupMove) -> bool:
+	#also for testing. CHANGE
 	return true
 
 
@@ -68,8 +71,8 @@ func _on_buy_pressed(ability: PowerupMove) -> void:
 		push_warning("Shop: no node in group 'player'")
 		return
 
-	Globals.gold -= ability.cost
-	owned_ids.append(ability.id)
+	Globals.dollars -= ability.cost
+	Globals.owned_ids.append(ability.id)
 	ability.apply(player)
 	refresh()  
 	

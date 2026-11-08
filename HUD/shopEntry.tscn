@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://o7oefdbr7uhg"]
 
-[ext_resource type="Texture2D" uid="uid://ck5jdcuxnv864" path="res://HUD/assets/ShopEntry 2.png" id="1_owrjl"]
 [ext_resource type="Script" uid="uid://vrwwtftljucs" path="res://HUD/shop_entry.gd" id="1_yb22b"]
+[ext_resource type="Texture2D" uid="uid://ds650jc1jm2" path="res://HUD/assets/Shop_Entry.png" id="2_yb22b"]
 
 [node name="ShopEntry" type="Control" unique_id=1768470186]
 custom_minimum_size = Vector2(207, 65)
@@ -18,7 +18,7 @@ script = ExtResource("1_yb22b")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_owrjl")
+texture = ExtResource("2_yb22b")
 
 [node name="NameLabel" type="Label" parent="." unique_id=1695870172]
 layout_mode = 0
