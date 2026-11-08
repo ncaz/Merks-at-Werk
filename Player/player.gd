@@ -33,7 +33,7 @@ var exiting: bool = false
 
 @export var health: int = 5
 
-var flashbang_dist: int = 500
+var bomb_radius: int = 500
 const flying_friend = preload("res://Powerups/flying_friend.tscn")
 var is_above_level: bool = false
 
@@ -133,16 +133,15 @@ func move_default(delta: float):
 	velocity = velocity.limit_length(MAX_SPEED) if not Input.is_action_pressed("DebugStop") else Vector2.ZERO
 
 func check_powerups():
-	if get_flashbang_pressed():
+	if get_bomb_pressed():
 		for enemy in get_tree().get_nodes_in_group("enemies"):
-			if enemy.global_position.distance_to(global_position) < flashbang_dist:
+			if enemy.global_position.distance_to(global_position) < bomb_radius:
 				if "spin_out" in enemy:
 					enemy.spin_out()
 					flash_job.emit()
 	if Input.is_action_just_pressed("Friendship"):
 		fly_above_level()
 		return
-		print("FUFHRRFHIRFNIFRUIRF")
 		var friend = flying_friend.instantiate()
 		friend.global_position = global_position
 		get_parent().add_child(friend)
@@ -154,8 +153,8 @@ func rotate_default(_delta: float):
 func get_dodge_pressed() -> bool:
 	return Input.is_action_pressed("Dodge")
 
-func get_flashbang_pressed() -> bool:
-	return Input.is_action_just_pressed("Use Flashbang")
+func get_bomb_pressed() -> bool:
+	return Input.is_action_just_pressed("Bomb")
 
 func get_input_axis():
 	return Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
