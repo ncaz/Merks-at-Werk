@@ -6,7 +6,9 @@ const ShopEntry = preload("res://HUD/shopEntry.tscn")
 
 var current_category := "moves"
 
-@onready var item_list = $CanvasLayer/ScrollContainer/ItemList
+@onready var tabs = $CanvasLayer/TabContainer
+@onready var item_list = $CanvasLayer/TabContainer/Moves/ScrollContainer/ItemList
+@onready var power_list = $CanvasLayer/TabContainer/power/ScrollContainer/ItemList
 @onready var moves_button = $CanvasLayer/MovesButton
 @onready var powerup_button = $CanvasLayer/PowerupButton
 @onready var close_button = $CanvasLayer/CloseButton
@@ -21,7 +23,12 @@ func _ready() -> void:
 	moves_button.pressed.connect(show_category.bind("moves"))
 	powerup_button.pressed.connect(show_category.bind("powerup"))
 	close_button.pressed.connect(close)
-	open()   # TEMP for testing; change back to hide() later
+	for entry in power_list.get_children():
+		if entry.has_signal("purchased"):
+			entry.purchased.connect(refresh)
+		else:
+			push_warning("Entry '%s' has no powerupEntry script attached" % entry.name)
+	open()
 
 
 func open() -> void:
@@ -35,6 +42,7 @@ func close() -> void:
 
 func show_category(category: String) -> void:
 	current_category = category
+	tabs.current_tab = 0 if category == "moves" else 1
 	refresh()
 
 
@@ -50,7 +58,10 @@ func refresh() -> void:
 		entry.setup(ability)
 		entry.set_state(is_owned(ability), can_afford(ability))
 		entry.buy_pressed.connect(_on_buy_pressed)
-		
+
+	for entry in power_list.get_children():
+		if entry.has_method("refresh"):
+			entry.refresh()
 
 
 func is_owned(ability: PowerupMove) -> bool:
@@ -58,7 +69,6 @@ func is_owned(ability: PowerupMove) -> bool:
 
 
 func can_afford(ability: PowerupMove) -> bool:
-	#also for testing. CHANGE
 	return true
 
 
@@ -74,6 +84,4 @@ func _on_buy_pressed(ability: PowerupMove) -> void:
 	Globals.dollars -= ability.cost
 	Globals.owned_ids.append(ability.id)
 	ability.apply(player)
-	refresh()  
-	
-	
+	refresh()

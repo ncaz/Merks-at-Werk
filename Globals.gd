@@ -8,4 +8,5 @@ var map_size: Vector2
 
 var score: int = 0
 var owned_ids: Array[StringName] = []
+var upgrade_levels: Dictionary = {}
 var dollars: int = 0

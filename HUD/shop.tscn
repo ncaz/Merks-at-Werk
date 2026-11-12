@@ -10,6 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://coqhu6isbf1xd" path="res://HUD/assets/ShopBut.png" id="4_lqkdr"]
 [ext_resource type="Texture2D" uid="uid://biovh6oag1bap" path="res://HUD/assets/ShopBut1 2.png" id="5_kln3a"]
 [ext_resource type="Texture2D" uid="uid://0y7lxv3qndd" path="res://HUD/assets/ShopBut1.png" id="6_gx0vx"]
+[ext_resource type="PackedScene" uid="uid://cak1j0138m4xl" path="res://HUD/powerupEntry.tscn" id="7_7edsc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_25c34"]
+content_margin_top = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7edsc"]
+content_margin_bottom = 58.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlslr"]
+content_margin_bottom = 58.0
 
 [node name="Shop" type="Control" unique_id=264461226]
 layout_mode = 3
@@ -27,27 +37,84 @@ offset_bottom = 240.0
 mouse_filter = 2
 texture = ExtResource("1_10582")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" unique_id=823550054]
-offset_left = 25.0
-offset_top = 53.5
-offset_right = 240.0
-offset_bottom = 239.0
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer" unique_id=1792233789]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.5
+offset_right = -256.0
+offset_bottom = -240.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 19)
+theme_override_constants/side_margin = 22
+theme_override_constants/tab_separation = 98
+theme_override_styles/panel = SubResource("StyleBoxEmpty_25c34")
+current_tab = 0
+tab_0/title = "Moves "
+
+[node name="Moves" type="HBoxContainer" parent="CanvasLayer/TabContainer" unique_id=933629222]
+layout_mode = 2
+alignment = 1
+metadata/_tab_index = 0
+metadata/_tab_name = "Moves "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TabContainer/Moves" unique_id=823550054]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7edsc")
 accessibility_region = true
 horizontal_scroll_mode = 0
 
-[node name="ItemList" type="VBoxContainer" parent="CanvasLayer/ScrollContainer" unique_id=2046578192]
+[node name="ItemList" type="VBoxContainer" parent="CanvasLayer/TabContainer/Moves/ScrollContainer" unique_id=2046578192]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ShopEntry" parent="CanvasLayer/ScrollContainer/ItemList" unique_id=1768470186 instance=ExtResource("2_kojw5")]
+[node name="ShopEntry" parent="CanvasLayer/TabContainer/Moves/ScrollContainer/ItemList" unique_id=1768470186 instance=ExtResource("2_kojw5")]
 layout_mode = 2
 
-[node name="ShopEntry2" parent="CanvasLayer/ScrollContainer/ItemList" unique_id=1141103003 instance=ExtResource("2_kojw5")]
+[node name="ShopEntry2" parent="CanvasLayer/TabContainer/Moves/ScrollContainer/ItemList" unique_id=1141103003 instance=ExtResource("2_kojw5")]
 layout_mode = 2
 
-[node name="ShopEntry3" parent="CanvasLayer/ScrollContainer/ItemList" unique_id=245945519 instance=ExtResource("2_kojw5")]
+[node name="ShopEntry3" parent="CanvasLayer/TabContainer/Moves/ScrollContainer/ItemList" unique_id=245945519 instance=ExtResource("2_kojw5")]
 layout_mode = 2
+
+[node name="power" type="HBoxContainer" parent="CanvasLayer/TabContainer" unique_id=234803408]
+visible = false
+layout_mode = 2
+alignment = 1
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TabContainer/power" unique_id=2026210279]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mlslr")
+accessibility_region = true
+horizontal_scroll_mode = 0
+
+[node name="ItemList" type="VBoxContainer" parent="CanvasLayer/TabContainer/power/ScrollContainer" unique_id=1222906422]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="Damage" parent="CanvasLayer/TabContainer/power/ScrollContainer/ItemList" unique_id=1044791154 instance=ExtResource("7_7edsc")]
+custom_minimum_size = Vector2(208, 64)
+layout_mode = 2
+id = &"damage"
+title = "Damage"
+
+[node name="Movement" parent="CanvasLayer/TabContainer/power/ScrollContainer/ItemList" unique_id=1443478798 instance=ExtResource("7_7edsc")]
+custom_minimum_size = Vector2(208, 64)
+layout_mode = 2
+id = &"movement"
+title = "Movement"
+
+[node name="Bullet Speed" parent="CanvasLayer/TabContainer/power/ScrollContainer/ItemList" unique_id=1527892639 instance=ExtResource("7_7edsc")]
+custom_minimum_size = Vector2(208, 64)
+layout_mode = 2
+id = &"bulletspeed"
+title = "Bullet Speed"
 
 [node name="CloseButton" type="Button" parent="CanvasLayer" unique_id=247308969]
 offset_left = 210.0
