@@ -16,6 +16,10 @@ func _ready() -> void:
 	for button in buttons:
 		button.mouse_entered.connect(_on_button_hover.bind(button))
 		button.mouse_exited.connect(_on_button_unhover)
+		
+	if !Dialogic.is_node_ready():
+		await Dialogic.ready
+	Dialogic.start("test_timeline")
 
 func _on_button_hover(button: Control) -> void:
 	hover_pointer.visible = true
