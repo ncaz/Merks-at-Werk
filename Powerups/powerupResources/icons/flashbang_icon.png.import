@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8w0bf4s65x23"
-path="res://.godot/imported/IMG_1598.PNG-957f2decee440f771ae1a71cd2671ec9.ctex"
+uid="uid://st3isnvu1xx8"
+path="res://.godot/imported/flashbang_icon.png-79909e4d4a6d4d3b21d2c6d915ec7164.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bullets/IMG_1598.PNG"
-dest_files=["res://.godot/imported/IMG_1598.PNG-957f2decee440f771ae1a71cd2671ec9.ctex"]
+source_file="res://Powerups/powerupResources/icons/flashbang_icon.png"
+dest_files=["res://.godot/imported/flashbang_icon.png-79909e4d4a6d4d3b21d2c6d915ec7164.ctex"]
 
 [params]
 
