@@ -13,8 +13,9 @@ func _ready() -> void:
 	bgm_player.bus = "Master"
 
 func play(stream: AudioStream, force_reset: bool = false):
-	if force_reset or (bgm_player.stream == stream and bgm_player.playing):
-		return
+	if not force_reset:
+		if bgm_player.stream == stream and bgm_player.playing:
+			return
 
 	if fade_tween and fade_tween.is_valid():
 		fade_tween.kill()
