@@ -1,0 +1,10 @@
+join test_character left
+test_character: My name is Saul Goodman
+[wait time="0.5"]
+audio "res://explosion.wav"
+[wait time="5.0"]
+test_character: ...
+test_character: Was that some kind of bite of 87?
+test_character: ...
+test_character: My name is Saul Goodman. Kill all billionaires. I love yaoi.
+[end_timeline]

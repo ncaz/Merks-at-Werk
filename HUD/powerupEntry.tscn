@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://cak1j0138m4xl"]
+
+[ext_resource type="Script" uid="uid://qko44uo3r85" path="res://HUD/powerup_entry.gd" id="1_33ert"]
+[ext_resource type="Texture2D" uid="uid://1b77po81wg4d" path="res://HUD/assets/ui_container2.png" id="1_f76je"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnusm"]
+bg_color = Color(0.217, 0.30123335, 0.35, 1)
+
+[node name="Control" type="Control" unique_id=1044791154]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_33ert")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1294750286]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 64.0
+texture = ExtResource("1_f76je")
+patch_margin_left = 5
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 7
+
+[node name="NameLabel" type="Label" parent="." unique_id=1365096472]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 117.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 20
+text = "Power"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1026483191]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 26.0
+offset_right = 193.0
+offset_bottom = 47.0
+theme_override_constants/separation = 11
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=1478828781]
+custom_minimum_size = Vector2(24, 24)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0.24313726)
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer" unique_id=828207800]
+custom_minimum_size = Vector2(24, 24)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0.24313726)
+
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer" unique_id=77305722]
+custom_minimum_size = Vector2(24, 24)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0.24313726)
+
+[node name="ColorRect4" type="ColorRect" parent="HBoxContainer" unique_id=1633009092]
+custom_minimum_size = Vector2(24, 24)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0.24313726)
+
+[node name="ColorRect5" type="ColorRect" parent="HBoxContainer" unique_id=931484447]
+custom_minimum_size = Vector2(24, 24)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0.24313726)
+
+[node name="ColorRect6" type="ColorRect" parent="HBoxContainer" unique_id=1067468431]
+custom_minimum_size = Vector2(24, 24)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0.24313726)
+
+[node name="ColorRect7" type="ColorRect" parent="HBoxContainer" unique_id=1195594519]
+custom_minimum_size = Vector2(24, 24)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0.24313726)
+
+[node name="CostLabel" type="Label" parent="." unique_id=547717146]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 8.0
+offset_right = 201.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 20
+text = "COST"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="." unique_id=1494224302]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 45.0
+offset_right = 123.0
+offset_bottom = 58.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qnusm")
+text = "BUY"
