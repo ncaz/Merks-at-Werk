@@ -51,7 +51,7 @@ func flash_warning():
 func flash_time_warning():
 	if !$"Warning Symbol/AnimationPlayer".is_playing():
 		$"Warning Symbol/HBoxContainer/TextureRect2".texture = hurry_texture
-		$"Warning Symbol/HBoxContainer/Label".text = "HURRY YOUR ASS"
+		$"Warning Symbol/HBoxContainer/Label".text = "HURRY!"
 		$"Warning Symbol/AnimationPlayer".play("Warning")
 	else:
 		await $"Warning Symbol/AnimationPlayer".animation_finished
