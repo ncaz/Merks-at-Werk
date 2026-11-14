@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d0cgxkc0bldoy" path="res://HUD/assets/triangle.png" id="5_8mrxo"]
 [ext_resource type="Texture2D" uid="uid://biqel4a582bp0" path="res://job.png" id="6_pcneq"]
 [ext_resource type="AudioStream" uid="uid://ukf0xodrjve2" path="res://explosion.wav" id="7_vgrgu"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="8_vgrgu"]
+[ext_resource type="Shader" uid="uid://hdi0vv2i8cqi" path="res://HUD/ui.tres" id="8_v11f2"]
+[ext_resource type="Texture2D" uid="uid://c0f0ac2qkl585" path="res://HUD/assets/warning.png" id="9_8j7r1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fyqef"]
 
@@ -107,6 +108,9 @@ _data = {
 &"RESET": SubResource("Animation_yu8mg")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vgrgu"]
+shader = ExtResource("8_v11f2")
+
 [sub_resource type="FontVariation" id="FontVariation_3t73g"]
 spacing_bottom = 9
 
@@ -155,6 +159,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_8j7r1"]
 resource_name = "Warning"
@@ -194,6 +210,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e8201"]
@@ -426,16 +454,18 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -56.5
+offset_top = 6.605
 offset_right = 56.5
-offset_bottom = 40.0
+offset_bottom = 46.60497
 grow_horizontal = 2
 offset_transform_enabled = true
 offset_transform_scale = Vector2(0.085, 0.085)
 
 [node name="TextureRect2" type="TextureRect" parent="Warning Symbol/HBoxContainer" unique_id=75432003]
+material = SubResource("ShaderMaterial_vgrgu")
 custom_maximum_size = Vector2(31, 31)
 layout_mode = 2
-texture = ExtResource("8_vgrgu")
+texture = ExtResource("9_8j7r1")
 
 [node name="Label" type="Label" parent="Warning Symbol/HBoxContainer" unique_id=183722621]
 layout_mode = 2

@@ -6,8 +6,8 @@ var news_scroll_speed: int = 200
 @export var ticker_message: String
 var ticker_increment: int = 1
 
-var warning_texture: Texture2D = load("res://icon.svg")
-var hurry_texture: Texture2D = load("res://Powerups/powerup.png")
+var warning_texture: Texture2D = load("res://HUD/assets/warning.png")
+var hurry_texture: Texture2D = load("res://HUD/assets/warning.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
