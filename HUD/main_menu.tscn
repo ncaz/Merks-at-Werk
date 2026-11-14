@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cl5y2rg5xbsb8"]
+
+[ext_resource type="Script" uid="uid://ceh273ko46c1h" path="res://HUD/parallax_script.gd" id="1_l7hc5"]
+[ext_resource type="Script" uid="uid://bqerkdu6pkv5k" path="res://HUD/select_pointer.gd" id="1_yudvj"]
+[ext_resource type="Texture2D" uid="uid://yg3m342ls8bn" path="res://HUD/assets/background.png" id="2_mg70j"]
+[ext_resource type="Texture2D" uid="uid://14g6fenunvgq" path="res://HUD/assets/back_city.png" id="3_yudvj"]
+[ext_resource type="Texture2D" uid="uid://durffvvtolppx" path="res://HUD/assets/front_city.png" id="4_qvokx"]
+[ext_resource type="Texture2D" uid="uid://1ausgkvtv7gp" path="res://HUD/assets/logo.png" id="5_fojc5"]
+[ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="6_mg70j"]
+[ext_resource type="Texture2D" uid="uid://bmspw8hfy6fxc" path="res://HUD/assets/pointer.png" id="8_qvokx"]
+
+[node name="MainMenu" type="Control" unique_id=929602940 node_paths=PackedStringArray("hover_pointer", "buttons")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yudvj")
+hover_pointer = NodePath("CanvasLayer/TextureRect")
+buttons = [NodePath("CanvasLayer/VBoxContainer/start_button"), NodePath("CanvasLayer/VBoxContainer/options"), NodePath("CanvasLayer/VBoxContainer/quit_button")]
+pointer_offset = Vector2(190, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2037814757]
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer" unique_id=819593429 node_paths=PackedStringArray("back_layer", "front_layer", "logo")]
+position = Vector2(256, 240)
+scale = Vector2(2, 2)
+script = ExtResource("1_l7hc5")
+back_layer = NodePath("back_city")
+front_layer = NodePath("front_city")
+logo = NodePath("logo")
+back_strength = Vector2(4.5, 1)
+front_strength = Vector2(7, 2)
+logo_strength = Vector2(2.5, 0.5)
+idle_speed = 1.0
+smoothing = 3.0
+back_max_offset = Vector2(15, 15)
+front_max_offset = Vector2(25, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Node2D" unique_id=98398774]
+texture = ExtResource("2_mg70j")
+
+[node name="back_city" type="Sprite2D" parent="CanvasLayer/Node2D" unique_id=426687153]
+texture = ExtResource("3_yudvj")
+
+[node name="front_city" type="Sprite2D" parent="CanvasLayer/Node2D" unique_id=1289129681]
+position = Vector2(0, 6)
+texture = ExtResource("4_qvokx")
+
+[node name="logo" type="Sprite2D" parent="CanvasLayer/Node2D" unique_id=1481014813]
+texture = ExtResource("5_fojc5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1699941467]
+offset_left = 1.0
+offset_top = 322.0
+offset_right = 512.0
+offset_bottom = 453.0
+theme_override_constants/separation = 0
+
+[node name="start_button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=370884889]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_mg70j")
+theme_override_font_sizes/font_size = 32
+text = "Start"
+flat = true
+
+[node name="options" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=708296134]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_mg70j")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+flat = true
+
+[node name="quit_button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1202143420]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_mg70j")
+theme_override_font_sizes/font_size = 32
+text = "Quit
+"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2142184631]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = 93.0
+offset_right = -51.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_qvokx")
+stretch_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]

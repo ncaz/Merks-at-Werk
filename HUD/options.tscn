@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://d2wwh6hv3fqp4"]
+
+[ext_resource type="Script" path="res://HUD/options.gd" id="1_0yqsn"]
+[ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="1_83br3"]
+
+[node name="Options" type="Control" unique_id=596716432 node_paths=PackedStringArray("crt_toggle")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0yqsn")
+crt_toggle = NodePath("VBoxContainer/CheckButton")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=577741940]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 54.0
+offset_right = 494.0
+offset_bottom = 88.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer2" unique_id=245925175]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_83br3")
+theme_override_font_sizes/font_size = 48
+text = "Options"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1098076513]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 102.0
+offset_right = 437.0
+offset_bottom = 202.0
+alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer" unique_id=1094233552]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_83br3")
+theme_override_font_sizes/font_size = 32
+text = "CRT Visuals (or press f1)"
+alignment = 1
+autowrap_trim_flags = 0
+
+[node name="Button" type="Button" parent="." unique_id=121068430]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 422.0
+offset_right = 267.0
+offset_bottom = 456.0
+theme_override_fonts/font = ExtResource("1_83br3")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
