@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dvh2yl86vpbcm"]
+
+[node name="LevelEntry" type="Node2D" unique_id=2100781701]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=427307633]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=797036806]
+z_index = -1
+anchors_preset = -1
+anchor_right = 0.078
+anchor_bottom = 0.083000004
+offset_right = 156.064
+offset_bottom = 140.16
+
+[node name="Label" type="Label" parent="CanvasLayer/Background" unique_id=846191735]
+z_index = 1
+layout_mode = 0
+offset_right = 196.0
+offset_bottom = 64.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(8, 8)
+theme_override_font_sizes/font_size = 32
+text = "LEVEL"
+uppercase = true
+
+[node name="Color" type="ColorRect" parent="CanvasLayer/Background" unique_id=172002619]
+layout_mode = 0
+offset_right = 196.0
+offset_bottom = 180.0
+color = Color(0.5372549, 0.6509804, 0.65882355, 1)
+
+[node name="Description" type="ColorRect" parent="CanvasLayer" unique_id=1102411387]
+anchors_preset = -1
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 188.0
+offset_bottom = 164.0
+color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/Description" unique_id=1749036780]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "Sample text"

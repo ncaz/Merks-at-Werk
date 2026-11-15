@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://w1soc5n7vwdm" path="res://Levels/base_field.tscn" id="1_4lxg4"]
 [ext_resource type="AudioStream" uid="uid://djkeqcf2c6dpu" path="res://Assets/Music/Track01_Gameplay.mp3" id="3_6ulme"]
-[ext_resource type="Texture2D" uid="uid://cfy21fcc5rtx0" path="res://Tilesets/CityTiles/city_tiles.png" id="4_6pht4"]
+[ext_resource type="Texture2D" uid="uid://ckb8om827smbg" path="res://Tilesets/CityTiles/city_tiles.png" id="4_6pht4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oaw8j"]
 texture = ExtResource("4_6pht4")

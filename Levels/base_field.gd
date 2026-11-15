@@ -24,7 +24,7 @@ func _ready():
 	
 	$ParallaxBackground.scroll_ignore_camera_zoom = true
 	player.global_position = spawn_position
-	Globals.player_position = spawn_position
+	Globals.player_position = player.global_position
 	if timer_enabled:
 		print("start field timer")
 		field_timer.start()
