@@ -1,0 +1,48 @@
+[gd_resource type="VisualShader" format=3 uid="uid://p4yxwiajcyml"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5vlud"]
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_nolxg"]
+function = 1
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_f26nj"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 1.0]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_x2e5d"]
+default_input_values = [0, 0.0, 1, 0.2]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_5vlud"]
+constant = Color(0.99082834, 0, 0.25532684, 1)
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jllrd"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_hvrsm"]
+function = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0aaik"]
+output_port_for_preview = 0
+input_name = "uv"
+
+[resource]
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(1040, 266.66666)
+nodes/vertex/3/node = SubResource("VisualShaderNodeColorConstant_5vlud")
+nodes/vertex/3/position = Vector2(-13.333333, 506.66666)
+nodes/vertex/4/node = SubResource("VisualShaderNodeInput_jllrd")
+nodes/vertex/4/position = Vector2(-653.3333, -66.666664)
+nodes/vertex/5/node = SubResource("VisualShaderNodeFloatFunc_hvrsm")
+nodes/vertex/5/position = Vector2(40, 173.33333)
+nodes/vertex/8/node = SubResource("VisualShaderNodeInput_0aaik")
+nodes/vertex/8/position = Vector2(-506.66666, 400)
+nodes/vertex/10/node = SubResource("VisualShaderNodeFloatOp_5vlud")
+nodes/vertex/10/position = Vector2(-160, 240)
+nodes/vertex/11/node = SubResource("VisualShaderNodeColorFunc_nolxg")
+nodes/vertex/11/position = Vector2(463.5988, 614.94965)
+nodes/vertex/12/node = SubResource("VisualShaderNodeVectorCompose_f26nj")
+nodes/vertex/12/position = Vector2(226.66667, 613.3333)
+nodes/vertex/13/node = SubResource("VisualShaderNodeFloatOp_x2e5d")
+nodes/vertex/13/position = Vector2(-333.33334, -53.333332)
+nodes/vertex/connections = PackedInt32Array(10, 0, 5, 0, 12, 0, 11, 0, 11, 0, 0, 2, 5, 0, 12, 0, 4, 0, 13, 0, 13, 0, 10, 0, 8, 0, 10, 1)
